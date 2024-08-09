@@ -1,0 +1,72 @@
+@font-face {
+    font-family: 'Home Video';
+    src: url('home video/HomeVideo-Regular.otf') format('truetype'); /* Убедитесь, что путь к файлу правильный */
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #121212; /* Более темный фон */
+    color: #e0e0e0; /* Светлый текст */
+}
+
+header {
+    background-color: #1c1c1c; /* Темный фон для шапки */
+    padding: 10px 20px; /* Уменьшены отступы */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h1 {
+    font-family: 'Home Video', cursive; /* Используем подключенный шрифт */
+    color: #00ff00; /* Зеленый цвет для заголовка */
+    margin: 0;
+    font-size: 24px; /* Увеличен размер заголовка для лучшей видимости */
+}
+
+nav {
+    margin-left: auto;
+}
+
+nav a {
+    margin: 0 10px; /* Уменьшены отступы между пунктами меню */
+    text-decoration: none;
+    color: #e0e0e0; /* Светлый цвет для ссылок */
+    font-size: 12px; /* Уменьшен размер шрифта */
+}
+
+nav a:hover {
+    text-decoration: underline; /* Подчеркивание при наведении */
+    color: #00ff00; /* Зеленый цвет при наведении */
+}
+
+footer {
+    background-color: #1c1c1c; /* Темный фон для подвала */
+    text-align: center;
+    padding: 10px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+main {
+    padding: 20px;
+}
+
+.code {
+    color: #00ff00; /* Зеленый цвет для кода */
+}
+
+.comment {
+    color: #888; /* Серый цвет для комментариев */
+}
+
+.string {
+    color: #ffcc00; /* Желтый цвет для строк */
+}
+
+.keyword {
+    color: #ff007f; /* Розовый цвет для ключевых слов */
+}
