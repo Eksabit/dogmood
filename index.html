@@ -2,9 +2,100 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Заголовок сайта</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber_Basement...</title>
+    <style>
+        @font-face {
+            font-family: 'Home Video';
+            src: url('fonts/HomeVideo.ttf') format('truetype'); /* Убедитесь, что путь к файлу правильный */
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #1e1e1e; /* Темный фон */
+            color: #f0f0f0; /* Светлый текст */
+        }
+        header {
+            background-color: #2a2a2a; /* Темный фон для шапки */
+            padding: 10px 20px; /* Уменьшены отступы */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        h1 {
+            font-family: 'Home Video', cursive; /* Используем подключенный шрифт */
+            color: #00ff00; /* Зеленый цвет для заголовка */
+            margin: 0;
+            font-size: 24px; /* Увеличен размер заголовка для лучшей видимости */
+        }
+        nav {
+            margin-left: auto;
+        }
+        nav a {
+            margin: 0 10px; /* Уменьшены отступы между пунктами меню */
+            text-decoration: none;
+            color: #f0f0f0; /* Светлый цвет для ссылок */
+            font-size: 12px; /* Уменьшен размер шрифта */
+        }
+        nav a:hover {
+            text-decoration: underline; /* Подчеркивание при наведении */
+            color: #00ff00; /* Зеленый цвет при наведении */
+        }
+        footer {
+            background-color: #2a2a2a; /* Темный фон для подвала */
+            text-align: center;
+            padding: 10px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+        main {
+            padding: 20px;
+        }
+    </style>
 </head>
 <body>
+
+<header>
+    <h1 id="site-title"></h1>
+    <nav>
+        <a href="#introduction">Введение</a>
+        <a href="#installation">Установка</a>
+        <a href="#variables">Переменные</a>
+        <a href="#control-structures">Управляющие структуры</a>
+        <a href="#functions">Функции</a>
+        <a href="#modules">Модули</a>
+        <a href="#exceptions">Исключения</a>
+        <a href="#file-handling">Файлы</a>
+        <a href="#libraries">Библиотеки</a>
+    </nav>
+</header>
+
+<main>
+    <h2>О сайте</h2>
+    <p>Сайт содержит в себе шпаргалки по Python, а также различные подсказки по использованию инструментов, таких как pip, создание виртуального окружения, настройка среды и прочее.</p>
+</main>
+
+<footer>
+    <p>&copy; 2023 Dogmood</p>
+</footer>
+
+<script>
+    const title = "Cyber_Basement...";
+    let index = 0;
+
+    function typeTitle() {
+        if (index < title.length) {
+            document.getElementById("site-title").innerHTML += title.charAt(index);
+            index++;
+            setTimeout(typeTitle, 100); // Задержка между буквами (100 мс)
+        }
+    }
+
+    // Запускаем функцию печати заголовка
+    typeTitle();
+</script>
 
 </body>
 </html>
