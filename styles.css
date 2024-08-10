@@ -51,15 +51,19 @@ nav {
 }
 
 nav a {
+    font-family: 'Home Video', cursive; /* Используем подключенный шрифт */
     margin: 0 10px; /* Уменьшены отступы между пунктами меню */
     text-decoration: none;
-    color: #e0e0e0; /* Светлый цвет для ссылок */
+    color: #39a102; /* Темно зеленый цвет для ссылок */
     font-size: 12px; /* Уменьшен размер шрифта */
 }
 
 nav a:hover {
-    text-decoration: underline; /* Подчеркивание при наведении */
+    font-family: 'Home Video', cursive; /* Используем подключенный шрифт */
     color: #00ff00; /* Зеленый цвет при наведении */
+    text-shadow:
+        0 0 5px rgba(0, 255, 0, 0.5), /* Слабое зеленое свечение */
+        0 0 10px rgba(0, 255, 0, 0.3); /* Более слабое свечение */
 }
 
 footer {
