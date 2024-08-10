@@ -46,6 +46,10 @@ h3 {
     color: #39a102; /* Зеленый цвет для заголовка */
 }
 
+a {
+    text-decoration: none; /* Убираем подчеркивание */
+}
+
 nav {
     margin-left: auto;
 }
