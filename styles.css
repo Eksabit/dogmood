@@ -29,7 +29,7 @@ h1 {
     font-family: 'Home Video', cursive; /* Используем подключенный шрифт */
     color: #00ff00; /* Зеленый цвет для заголовка */
     margin: 0;
-    font-size: 24px; /* Увеличен размер заголовка для лучшей видимости */
+    font-size: 30px; /* Увеличен размер заголовка для лучшей видимости */
     text-shadow:
         0 0 5px rgba(0, 255, 0, 0.5), /* Слабое зеленое свечение */
         0 0 10px rgba(0, 255, 0, 0.3); /* Более слабое свечение */
@@ -96,20 +96,23 @@ main {
 }
 
 .main-title {
-    color: #2c3e50;
-    font-size: 2em;
+    font-family: 'Home Video', cursive; /* Используем подключенный шрифт */
+    color: #39a102;
+    font-size: 1.5em;
     margin-bottom: 10px;
 }
 
 .section-title {
-    color: #2c3e50;
-    font-size: 1.5em;
+    font-family: 'Home Video', cursive; /* Используем подключенный шрифт */
+    color: #ffcc00;
+    font-size: 1.2em;
     margin-top: 20px;
     margin-bottom: 10px;
 }
 
 .subsection-title {
-    color: #27ae60;
+    font-family: 'Home Video', cursive; /* Используем подключенный шрифт */
+    color: #6e6e6e;
     font-size: 1.2em;
     margin-top: 15px;
     margin-bottom: 5px;
