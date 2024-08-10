@@ -6,7 +6,7 @@
 body {
     font-family: Arial, sans-serif;
     margin: 0;
-    padding: 0;
+    padding: 15px;
     background-color: #121212; /* Более темный фон */
     color: #e0e0e0; /* Светлый текст */
 }
