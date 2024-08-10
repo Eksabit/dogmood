@@ -95,4 +95,32 @@ main {
     color: #ff007f; /* Розовый цвет для ключевых слов */
 }
 
+.main-title {
+    color: #2c3e50;
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.section-title {
+    color: #2980b9;
+    font-size: 1.5em;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.subsection-title {
+    color: #27ae60;
+    font-size: 1.2em;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+pre {
+    background-color: #ecf0f1;
+    border-left: 5px solid #2980b9;
+    padding: 10px;
+    overflow-x: auto;
+}
+
+
 
