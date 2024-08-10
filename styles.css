@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'Home Video';
-    src: url('home video/HomeVideo-Regular.otf') format('truetype'); /* Убедитесь, что путь к файлу правильный */
+    src: url('home video/HomeVideo-Regular.otf') format('opentype'); /* Убедитесь, что путь к файлу правильный */
 }
 
 body {
