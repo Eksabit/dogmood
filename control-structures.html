@@ -2,9 +2,135 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber_Basement...</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Подключаем CSS файл -->
 </head>
 <body>
+
+<header>
+    <h1 id="site-title"></h1>
+    <nav>
+        <a href="introduction.html">Введение</a>
+        <a href="#installation">Установка</a>
+        <a href="#variables">Переменные</a>
+        <a href="#control-structures">Управляющие структуры</a>
+        <a href="#functions">Функции</a>
+        <a href="#modules">Модули</a>
+        <a href="#exceptions">Исключения</a>
+        <a href="#file-handling">Файлы</a>
+        <a href="#libraries">Библиотеки</a>
+    </nav>
+</header>
+
+<main>
+    <div class="main-title">Управляющие структуры в Python</div>
+    <p>Управляющие структуры позволяют управлять потоком выполнения программы. В Python основными управляющими структурами являются условные операторы и циклы.</p>
+
+    <div class="section-title">Условные операторы</div>
+    <p>Условные операторы позволяют выполнять определенные блоки кода в зависимости от выполнения условия. Основные условные операторы в Python:</p>
+
+    <div class="subsection-title">1. Оператор if</div>
+    <p>Оператор <code>if</code> используется для проверки условия. Если условие истинно, выполняется соответствующий блок кода:</p>
+
+    <pre><code>age = 18
+if age >= 18:
+    print("Вы совершеннолетний.")</code></pre>
+
+    <p>В этом примере, если переменная <code>age</code> больше или равна 18, будет выведено сообщение.</p>
+
+    <div class="subsection-title">2. Оператор else</div>
+    <p>Оператор <code>else</code> используется для выполнения блока кода, если условие <code>if</code> ложно:</p>
+
+    <pre><code>age = 16
+if age >= 18:
+    print("Вы совершеннолетний.")
+else:
+    print("Вы несовершеннолетний.")</code></pre>
+
+    <p>Здесь, если <code>age</code> меньше 18, будет выведено сообщение о несовершеннолетии.</p>
+
+    <div class="subsection-title">3. Оператор elif</div>
+    <p>Оператор <code>elif</code> (сокращение от "else if") позволяет проверять несколько условий:</p>
+
+    <pre><code>score = 85
+if score >= 90:
+    print("Отлично!")
+elif score >= 75:
+    print("Хорошо!")
+else:
+    print("Нужно улучшить результат.")</code></pre>
+
+    <p>В этом примере программа проверяет, в какую категорию попадает оценка <code>score</code>.</p>
+
+    <div class="section-title">Циклы</div>
+    <p>Циклы позволяют выполнять блоки кода многократно. В Python есть два основных типа циклов: <code>for</code> и <code>while</code>.</p>
+
+    <div class="subsection-title">1. Цикл for</div>
+    <p>Цикл <code>for</code> используется для перебора элементов в последовательности (например, списке, строке или диапазоне):</p>
+
+    <pre><code>fruits = ["яблоко", "банан", "вишня"]
+for fruit in fruits:
+    print(f"Я люблю {fruit}.")</code></pre>
+
+    <p>В этом примере цикл перебирает все элементы списка <code>fruits</code> и выводит сообщение для каждого фрукта.</p>
+
+    <div class="subsection-title">2. Цикл while</div>
+    <p>Цикл <code>while</code> выполняет блок кода, пока условие истинно:</p>
+
+    <pre><code>count = 0
+while count < 5:
+    print(f"Счетчик: {count}")
+    count += 1</code></pre>
+
+    <p>В этом примере цикл будет выполняться, пока <code>count</code> меньше 5, увеличивая значение <code>count</code> на 1 в каждой итерации.</p>
+
+    <div class="section-title">Прерывание и продолжение циклов</div>
+    <p>В Python есть операторы <code>break</code> и <code>continue</code>, которые позволяют управлять выполнением циклов:</p>
+
+    <div class="subsection-title">1. Оператор break</div>
+    <p>Оператор <code>break</code> используется для выхода из цикла:</p>
+
+    <pre><code>for i in range(10):
+    if i == 5:
+        break
+    print(i)</code></pre>
+
+    <p>В этом примере цикл завершится, когда <code>i</code> станет равным 5.</p>
+
+    <div class="subsection-title">2. Оператор continue</div>
+    <p>Оператор <code>continue</code> пропускает текущую итерацию и переходит к следующей:</p>
+
+    <pre><code>for i in range(5):
+    if i == 2:
+        continue
+    print(i)</code></pre>
+
+    <p>Здесь, когда <code>i</code> равно 2, эта итерация будет пропущена, и программа продолжит с следующего значения.</p>
+
+    <div class="section-title">Заключение</div>
+    <p>Управляющие структуры, такие как условные операторы и циклы, являются важными инструментами для управления потоком выполнения программы в Python. Понимание их работы позволяет создавать более сложные и функциональные программы.</p>
+</main>
+
+<footer>
+    <p>&copy; 2024 Dogmood</p>
+</footer>
+
+<script>
+    const title = "Cyber_Basement...";
+    let index = 0;
+
+    function typeTitle() {
+        if (index < title.length) {
+            document.getElementById("site-title").innerHTML += title.charAt(index);
+            index++;
+            setTimeout(typeTitle, 100); // Задержка между буквами (100 мс)
+        }
+    }
+
+    // Запускаем функцию печати заголовка
+    typeTitle();
+</script>
 
 </body>
 </html>

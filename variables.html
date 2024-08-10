@@ -2,9 +2,109 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber_Basement...</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Подключаем CSS файл -->
 </head>
 <body>
+
+<header>
+    <h1 id="site-title"></h1>
+    <nav>
+        <a href="introduction.html">Введение</a>
+        <a href="#installation">Установка</a>
+        <a href="#variables">Переменные</a>
+        <a href="#control-structures">Управляющие структуры</a>
+        <a href="#functions">Функции</a>
+        <a href="#modules">Модули</a>
+        <a href="#exceptions">Исключения</a>
+        <a href="#file-handling">Файлы</a>
+        <a href="#libraries">Библиотеки</a>
+    </nav>
+</header>
+
+<main>
+    <div class="main-title">Переменные в Python</div>
+    <p>Переменные — это именованные области памяти, которые используются для хранения данных. В Python переменные могут хранить различные типы данных, и их можно использовать для выполнения операций и манипуляций с этими данными.</p>
+
+    <div class="section-title">Объявление переменных</div>
+    <p>В Python переменные объявляются просто путем присвоения значения. Например:</p>
+
+    <pre><code>name = "Alice"
+age = 30
+is_student = True</code></pre>
+
+    <p>В этом примере мы объявили три переменные: <code>name</code>, <code>age</code> и <code>is_student</code>.</p>
+
+    <div class="section-title">Типы переменных</div>
+    <p>Python поддерживает несколько основных типов данных, которые можно использовать в переменных:</p>
+    <ul>
+        <li><strong>Целые числа (int)</strong>: Целые числа, например, <code>10</code>, <code>-5</code>.</li>
+        <li><strong>Числа с плавающей запятой (float)</strong>: Числа с десятичной точкой, например, <code>3.14</code>, <code>-0.001</code>.</li>
+        <li><strong>Строки (str)</strong>: Последовательности символов, заключенные в одинарные или двойные кавычки, например, <code>"Hello"</code>, <code>'World'</code>.</li>
+        <li><strong>Логические значения (bool)</strong>: Значения <code>True</code> или <code>False</code>.</li>
+    </ul>
+
+    <div class="section-title">Примеры использования переменных</div>
+    <p>Давайте рассмотрим несколько примеров использования переменных в коде:</p>
+
+    <div class="subsection-title">1. Целые числа</div>
+    <pre><code>num1 = 10
+num2 = 5
+sum_result = num1 + num2
+print(f"Сумма: {sum_result}")</code></pre>
+
+    <p>В этом примере мы объявили две переменные <code>num1</code> и <code>num2</code>, сложили их и вывели результат.</p>
+
+    <div class="subsection-title">2. Строки</div>
+    <pre><code>first_name = "Alice"
+last_name = "Smith"
+full_name = first_name + " " + last_name
+print(f"Полное имя: {full_name}")</code></pre>
+
+    <p>Здесь мы объединили две строки, чтобы получить полное имя.</p>
+
+    <div class="subsection-title">3. Логические значения</div>
+    <pre><code>is_raining = False
+if is_raining:
+    print("Не забудьте взять зонт!")
+else:
+    print("Погода хорошая!")</code></pre>
+
+    <p>В этом примере мы используем логическую переменную <code>is_raining</code> для проверки, идет ли дождь.</p>
+
+    <div class="section-title">Изменение значений переменных</div>
+    <p>Переменные в Python могут изменять свои значения в процессе выполнения программы. Например:</p>
+
+    <pre><code>count = 0
+count += 1
+print(f"Текущее значение: {count}")</code></pre>
+
+    <p>Здесь мы увеличиваем значение переменной <code>count</code> на 1 и выводим его.</p>
+
+    <div class="section-title">Заключение</div>
+    <p>Переменные являются основным строительным блоком программирования в Python. Они позволяют хранить и манипулировать данными, что делает код более гибким и мощным. Понимание работы с переменными и их типами — это важный шаг на пути к освоению Python.</p>
+</main>
+
+<footer>
+    <p>&copy; 2024 Dogmood</p>
+</footer>
+
+<script>
+    const title = "Cyber_Basement...";
+    let index = 0;
+
+    function typeTitle() {
+        if (index < title.length) {
+            document.getElementById("site-title").innerHTML += title.charAt(index);
+            index++;
+            setTimeout(typeTitle, 100); // Задержка между буквами (100 мс)
+        }
+    }
+
+    // Запускаем функцию печати заголовка
+    typeTitle();
+</script>
 
 </body>
 </html>

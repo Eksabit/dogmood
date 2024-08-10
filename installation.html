@@ -2,9 +2,112 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber_Basement...</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Подключаем CSS файл -->
 </head>
 <body>
+
+<header>
+    <h1 id="site-title"></h1>
+    <nav>
+        <a href="introduction.html">Введение</a>
+        <a href="#installation">Установка</a>
+        <a href="#variables">Переменные</a>
+        <a href="#control-structures">Управляющие структуры</a>
+        <a href="#functions">Функции</a>
+        <a href="#modules">Модули</a>
+        <a href="#exceptions">Исключения</a>
+        <a href="#file-handling">Файлы</a>
+        <a href="#libraries">Библиотеки</a>
+    </nav>
+</header>
+
+<main>
+    <div class="main-title">Установка Python: Пошаговая инструкция</div>
+    <p>В этой статье мы рассмотрим, как установить Python на различные операционные системы, а также настроить
+        среду разработки для комфортной работы.</p>
+
+    <div class="section-title">Шаг 1: Скачивание Python</div>
+    <p>Перейдите на официальный сайт Python по адресу <a href="https://www.python.org/downloads/" target="_blank">python.org/downloads</a>. Выберите версию Python, соответствующую вашей операционной системе, и нажмите на кнопку загрузки.</p>
+
+    <div class="section-title">Шаг 2: Установка Python на Windows</div>
+    <div class="subsection-title">1. Запустите установщик</div>
+    <p>После завершения загрузки откройте установочный файл. Убедитесь, что вы отметили опцию <strong>"Add Python to PATH"</strong> перед нажатием на кнопку <strong>"Install Now"</strong>.</p>
+
+    <div class="subsection-title">2. Завершите установку</div>
+    <p>Следуйте инструкциям установщика. После завершения установки вы можете проверить, что Python установлен, открыв командную строку и введя:</p>
+
+    <pre><code>python --version</code></pre>
+
+    <div class="section-title">Шаг 3: Установка Python на macOS</div>
+    <div class="subsection-title">1. Установите Homebrew (если еще не установлен)</div>
+    <p>Homebrew — это менеджер пакетов для macOS. Откройте терминал и выполните следующую команду:</p>
+
+    <pre><code>/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</code></pre>
+
+    <div class="subsection-title">2. Установите Python</div>
+    <p>После установки Homebrew выполните команду:</p>
+
+    <pre><code>brew install python</code></pre>
+
+    <div class="subsection-title">3. Проверьте установку</div>
+    <p>Проверьте, что Python установлен, введя в терминале:</p>
+
+    <pre><code>python3 --version</code></pre>
+
+    <div class="section-title">Шаг 4: Установка Python на Linux</div>
+    <div class="subsection-title">1. Установите Python через пакетный менеджер</div>
+    <p>В большинстве дистрибутивов Linux Python уже установлен. Чтобы установить или обновить Python, используйте следующие команды в терминале:</p>
+
+    <pre><code>sudo apt update
+sudo apt install python3</code></pre>
+
+    <div class="subsection-title">2. Проверьте установку</div>
+    <p>Проверьте, что Python установлен, введя в терминале:</p>
+
+    <pre><code>python3 --version</code></pre>
+
+    <div class="section-title">Шаг 5: Настройка среды разработки</div>
+    <p>Для удобной работы с Python рекомендуется использовать интегрированную среду разработки (IDE). Вот несколько популярных вариантов:</p>
+    <ul>
+        <li><strong>PyCharm</strong>: Мощная IDE для Python с множеством функций. Скачайте с <a href="https://www.jetbrains.com/pycharm/" target="_blank">официального сайта</a>.</li>
+        <li><strong>Visual Studio Code</strong>: Легковесный редактор кода с поддержкой Python. Установите с <a href="https://code.visualstudio.com/" target="_blank">официального сайта</a>.</li>
+        <li><strong>Jupyter Notebook</strong>: Идеален для научных вычислений и анализа данных. Установите через pip:</li>
+    </ul>
+
+    <pre><code>pip install notebook</code></pre>
+
+    <div class="section-title">Шаг 6: Проверка установки среды разработки</div>
+    <p>После установки IDE откройте её и создайте новый проект. Напишите простой код для проверки работы:</p>
+
+    <pre><code>print("Hello, World!")</code></pre>
+
+    <p>Запустите код, и вы должны увидеть вывод <strong>Hello, World!</strong>.</p>
+
+    <div class="section-title">Заключение</div>
+    <p>Теперь вы знаете, как установить Python на различные операционные системы и настроить среду разработки. Python — это мощный инструмент, который открывает множество возможностей для разработки программного обеспечения, анализа данных и многого другого.</p>
+</main>
+
+<footer>
+    <p>&copy; 2024 Dogmood</p>
+</footer>
+
+<script>
+    const title = "Cyber_Basement...";
+    let index = 0;
+
+    function typeTitle() {
+        if (index < title.length) {
+            document.getElementById("site-title").innerHTML += title.charAt(index);
+            index++;
+            setTimeout(typeTitle, 100); // Задержка между буквами (100 мс)
+        }
+    }
+
+    // Запускаем функцию печати заголовка
+    typeTitle();
+</script>
 
 </body>
 </html>

@@ -2,9 +2,107 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber_Basement...</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Подключаем CSS файл -->
 </head>
 <body>
+
+<header>
+    <h1 id="site-title"></h1>
+    <nav>
+        <a href="introduction.html">Введение</a>
+        <a href="#installation">Установка</a>
+        <a href="#variables">Переменные</a>
+        <a href="#control-structures">Управляющие структуры</a>
+        <a href="#functions">Функции</a>
+        <a href="#modules">Модули</a>
+        <a href="#exceptions">Исключения</a>
+        <a href="#file-handling">Файлы</a>
+        <a href="#libraries">Библиотеки</a>
+    </nav>
+</header>
+
+<main>
+    <div class="main-title">Функции в Python</div>
+    <p>Функции — это именованные блоки кода, которые можно вызывать для выполнения определенной задачи. Они помогают организовать код, повышают его читаемость и позволяют повторно использовать код без дублирования.</p>
+
+    <div class="section-title">Создание функции</div>
+    <p>Функция создается с помощью ключевого слова <code>def</code>, за которым следует имя функции и круглые скобки, в которых могут быть указаны параметры. Например:</p>
+
+    <pre><code>def greet(name):
+    print(f"Hello, {name}!")</code></pre>
+
+    <p>В этом примере мы создали функцию <code>greet</code>, которая принимает один параметр <code>name</code> и выводит приветствие.</p>
+
+    <div class="section-title">Вызов функции</div>
+    <p>Чтобы вызвать функцию, просто укажите ее имя и передайте необходимые аргументы:</p>
+
+    <pre><code>greet("Alice")</code></pre>
+
+    <p>Этот вызов функции выведет: <strong>Hello, Alice!</strong></p>
+
+    <div class="section-title">Параметры и аргументы</div>
+    <p>Функции могут принимать параметры, которые позволяют передавать данные в функцию. Параметры могут иметь значения по умолчанию:</p>
+
+    <pre><code>def greet(name="Guest"):
+    print(f"Hello, {name}!")</code></pre>
+
+    <p>Теперь, если мы вызовем <code>greet()</code> без аргументов, будет использовано значение по умолчанию:</p>
+
+    <pre><code>greet()  # Вывод: Hello, Guest!</code></pre>
+
+    <div class="section-title">Возврат значений</div>
+    <p>Функции могут возвращать значения с помощью ключевого слова <code>return</code>. Например:</p>
+
+    <pre><code>def add(a, b):
+    return a + b</code></pre>
+
+    <p>Теперь мы можем вызвать функцию <code>add</code> и сохранить результат:</p>
+
+    <pre><code>result = add(5, 3)
+print(result)  # Вывод: 8</code></pre>
+
+    <div class="section-title">Документация функций</div>
+    <p>Функции могут содержать документацию, которая описывает, что делает функция. Документация пишется в виде строки сразу после объявления функции:</p>
+
+    <pre><code>def multiply(a, b):
+    """Умножает два числа и возвращает результат."""
+    return a * b</code></pre>
+
+    <p>Чтобы получить доступ к документации функции, можно использовать атрибут <code>__doc__</code>:</p>
+
+    <pre><code>print(multiply.__doc__)  # Вывод: Умножает два числа и возвращает результат.</code></pre>
+
+    <div class="section-title">Лямбда-функции</div>
+    <p>Лямбда-функции — это анонимные функции, которые можно создавать с помощью ключевого слова <code>lambda</code>. Они обычно используются для простых операций:</p>
+
+    <pre><code>add = lambda x, y: x + y
+print(add(2, 3))  # Вывод: 5</code></pre>
+
+    <div class="section-title">Заключение</div>
+    <p>Функции являются важной частью программирования на Python. Они помогают организовать код, делают его более читаемым и позволяют повторно использовать код. Понимание того, как создавать и использовать функции, является ключевым аспектом эффективного программирования.</p>
+</main>
+
+<footer>
+    <p>&copy; 2024 Dogmood</p>
+</footer>
+
+<script>
+    const title = "Cyber_Basement...";
+    let index = 0;
+
+    function typeTitle() {
+        if (index < title.length) {
+            document.getElementById("site-title").innerHTML += title.charAt(index);
+            index++;
+            setTimeout(typeTitle, 100); // Задержка между буквами (100 мс)
+        }
+    }
+
+    // Запускаем функцию печати заголовка
+    typeTitle();
+</script>
 
 </body>
 </html>

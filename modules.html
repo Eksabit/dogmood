@@ -2,9 +2,117 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber_Basement...</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Подключаем CSS файл -->
 </head>
 <body>
+
+<header>
+    <h1 id="site-title"></h1>
+    <nav>
+        <a href="introduction.html">Введение</a>
+        <a href="#installation">Установка</a>
+        <a href="#variables">Переменные</a>
+        <a href="#control-structures">Управляющие структуры</a>
+        <a href="#functions">Функции</a>
+        <a href="#modules">Модули</a>
+        <a href="#exceptions">Исключения</a>
+        <a href="#file-handling">Файлы</a>
+        <a href="#libraries">Библиотеки</a>
+    </nav>
+</header>
+
+<main>
+    <div class="main-title">Модули и пакеты в Python</div>
+    <p>Модули и пакеты в Python позволяют организовать код, делая его более структурированным и удобным для повторного использования. Модули представляют собой файлы с кодом, а пакеты — это коллекции модулей.</p>
+
+    <div class="section-title">Что такое модуль?</div>
+    <p>Модуль — это файл, содержащий код на Python, который можно импортировать и использовать в других файлах. Модули могут содержать функции, классы и переменные.</p>
+
+    <div class="subsection-title">Создание модуля</div>
+    <p>Чтобы создать модуль, просто создайте файл с расширением <code>.py</code>. Например, создадим файл <code>mymodule.py</code>:</p>
+
+    <pre><code># mymodule.py
+def greet(name):
+    return f"Hello, {name}!"</code></pre>
+
+    <p>В этом модуле мы определили функцию <code>greet</code>, которая принимает имя и возвращает приветствие.</p>
+
+    <div class="section-title">Импортирование модулей</div>
+    <p>Чтобы использовать функции и классы из модуля, его нужно импортировать. Это можно сделать с помощью ключевого слова <code>import</code>:</p>
+
+    <pre><code>import mymodule
+
+print(mymodule.greet("Alice"))  # Вывод: Hello, Alice!</code></pre>
+
+    <p>В этом примере мы импортировали модуль <code>mymodule</code> и вызвали функцию <code>greet</code>.</p>
+
+    <div class="subsection-title">Импортирование конкретных функций</div>
+    <p>Если вы хотите импортировать только определенные функции из модуля, используйте следующий синтаксис:</p>
+
+    <pre><code>from mymodule import greet
+
+print(greet("Bob"))  # Вывод: Hello, Bob!</code></pre>
+
+    <p>Теперь мы можем вызывать функцию <code>greet</code> напрямую, без указания имени модуля.</p>
+
+    <div class="subsection-title">Импортирование с псевдонимом</div>
+    <p>Вы можете импортировать модуль или функцию с псевдонимом, используя ключевое слово <code>as</code>:</p>
+
+    <pre><code>import mymodule as mm
+
+print(mm.greet("Charlie"))  # Вывод: Hello, Charlie!</code></pre>
+
+    <div class="section-title">Что такое пакет?</div>
+    <p>Пакет — это специальный тип модуля, который может содержать другие модули и подкаталоги. Пакеты позволяют организовать код в иерархическую структуру.</p>
+
+    <div class="subsection-title">Создание пакета</div>
+    <p>Чтобы создать пакет, создайте папку и добавьте в нее файл <code>__init__.py</code>. Например:</p>
+
+    <pre><code>my_package/
+    ├── __init__.py
+    └── mymodule.py</code></pre>
+
+    <p>Файл <code>__init__.py</code> может быть пустым или содержать код, который будет выполняться при импорте пакета.</p>
+
+    <div class="section-title">Импортирование пакетов</div>
+    <p>Чтобы импортировать модуль из пакета, используйте следующий синтаксис:</p>
+
+    <pre><code>from my_package import mymodule
+
+print(mymodule.greet("Diana"))  # Вывод: Hello, Diana!</code></pre>
+
+    <div class="section-title">Стандартные библиотеки</div>
+    <p>Python поставляется с обширной стандартной библиотекой, которая включает множество модулей и пакетов. Например, модуль <code>math</code> предоставляет математические функции:</p>
+
+    <pre><code>import math
+
+print(math.sqrt(16))  # Вывод: 4.0</code></pre>
+
+    <div class="section-title">Заключение</div>
+    <p>Модули и пакеты являются важными инструментами для организации кода в Python. Они позволяют разделять код на логические части, что делает его более читаемым и удобным для повторного использования. Понимание работы с модулями и пакетами — это ключевой аспект эффективного программирования на Python.</p>
+</main>
+
+<footer>
+    <p>&copy; 2024 Dogmood</p>
+</footer>
+
+<script>
+    const title = "Cyber_Basement...";
+    let index = 0;
+
+    function typeTitle() {
+        if (index < title.length) {
+            document.getElementById("site-title").innerHTML += title.charAt(index);
+            index++;
+            setTimeout(typeTitle, 100); // Задержка между буквами (100 мс)
+        }
+    }
+
+    // Запускаем функцию печати заголовка
+    typeTitle();
+</script>
 
 </body>
 </html>

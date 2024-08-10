@@ -2,9 +2,124 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber_Basement...</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Подключаем CSS файл -->
 </head>
 <body>
+
+<header>
+    <h1 id="site-title"></h1>
+    <nav>
+        <a href="introduction.html">Введение</a>
+        <a href="#installation">Установка</a>
+        <a href="#variables">Переменные</a>
+        <a href="#control-structures">Управляющие структуры</a>
+        <a href="#functions">Функции</a>
+        <a href="#modules">Модули</a>
+        <a href="#exceptions">Исключения</a>
+        <a href="#file-handling">Файлы</a>
+        <a href="#libraries">Библиотеки</a>
+    </nav>
+</header>
+
+<main>
+<div class="main-title">Обзор популярных библиотек Python</div>
+<p>Python предлагает множество библиотек, которые расширяют его функциональность и упрощают разработку. В этом разделе мы рассмотрим несколько популярных библиотек, примеры их использования, а также процесс создания собственных библиотек.</p>
+
+<div class="section-title">Популярные библиотеки Python</div>
+
+<div class="subsection-title">1. NumPy</div>
+<p>NumPy — это библиотека для работы с многомерными массивами и матрицами, а также для выполнения математических операций над ними.</p>
+
+<pre><code>import numpy as np
+
+# Создание массива
+array = np.array([1, 2, 3, 4, 5])
+print(array.mean())  # Вывод среднего значения</code></pre>
+
+<div class="subsection-title">2. Pandas</div>
+<p>Pandas — это библиотека для анализа и обработки данных, предоставляющая удобные структуры данных, такие как <code>DataFrame</code>.</p>
+
+<pre><code>import pandas as pd
+
+# Чтение данных из CSV файла
+data = pd.read_csv("data.csv")
+print(data.describe())  # Вывод статистики по данным</code></pre>
+
+<div class="subsection-title">3. Matplotlib</div>
+<p>Matplotlib — это библиотека для визуализации данных, позволяющая создавать различные типы графиков.</p>
+
+<pre><code>import matplotlib.pyplot as plt
+
+# Данные для графика
+x = [1, 2, 3, 4, 5]
+y = [2, 3, 5, 7, 11]
+
+# Создание графика
+plt.plot(x, y)
+plt.title("Пример графика")
+plt.show()</code></pre>
+
+<div class="section-title">Создание собственных библиотек</div>
+<p>Создание собственной библиотеки в Python — это простой процесс, который позволяет вам организовать и повторно использовать код. Вот шаги для создания библиотеки:</p>
+
+<div class="subsection-title">1. Структура проекта</div>
+<p>Создайте папку для вашей библиотеки и добавьте в нее файл <code>__init__.py</code>, который делает папку пакетом:</p>
+
+<pre><code>my_library/
+    ├── __init__.py
+    └── my_module.py</code></pre>
+
+<div class="subsection-title">2. Написание кода</div>
+<p>В файле <code>my_module.py</code> вы можете определить функции и классы:</p>
+
+<pre><code># my_module.py
+def greet(name):
+    return f"Hello, {name}!"</code></pre>
+
+<div class="subsection-title">3. Импортирование и использование библиотеки</div>
+<p>Теперь вы можете импортировать и использовать вашу библиотеку в других проектах:</p>
+
+<pre><code>from my_library.my_module import greet
+
+print(greet("Alice"))  # Вывод: Hello, Alice!</code></pre>
+
+<div class="subsection-title">4. Упаковка и распространение</div>
+<p>Если вы хотите поделиться своей библиотекой, вы можете упаковать ее с помощью <code>setuptools</code> и загрузить на <code>PyPI</code>:</p>
+
+<pre><code>from setuptools import setup
+
+setup(
+    name="my_library",
+    version="0.1",
+    packages=["my_library"],
+)</code></pre>
+
+<div class="section-title">Заключение</div>
+<p>Библиотеки Python, такие как NumPy, Pandas и Matplotlib, значительно упрощают разработку и анализ данных. Создание собственных библиотек позволяет организовать код и повторно использовать его в различных проектах, что делает разработку более эффективной.</p>
+
+</main>
+
+<footer>
+    <p>&copy; 2024 Dogmood</p>
+</footer>
+
+<script>
+    const title = "Cyber_Basement...";
+    let index = 0;
+
+    function typeTitle() {
+        if (index < title.length) {
+            document.getElementById("site-title").innerHTML += title.charAt(index);
+            index++;
+            setTimeout(typeTitle, 100); // Задержка между буквами (100 мс)
+        }
+    }
+
+    // Запускаем функцию печати заголовка
+    typeTitle();
+</script>
 
 </body>
 </html>

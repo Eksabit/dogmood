@@ -2,9 +2,99 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber_Basement...</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Подключаем CSS файл -->
 </head>
 <body>
+
+<header>
+    <h1 id="site-title"></h1>
+    <nav>
+        <a href="introduction.html">Введение</a>
+        <a href="#installation">Установка</a>
+        <a href="#variables">Переменные</a>
+        <a href="#control-structures">Управляющие структуры</a>
+        <a href="#functions">Функции</a>
+        <a href="#modules">Модули</a>
+        <a href="#exceptions">Исключения</a>
+        <a href="#file-handling">Файлы</a>
+        <a href="#libraries">Библиотеки</a>
+    </nav>
+</header>
+
+<main>
+<div class="main-title">Исключения в Python</div>
+<p>Исключения позволяют обрабатывать ошибки и другие исключительные ситуации, которые могут возникнуть во время выполнения программы. Правильная обработка исключений делает ваш код более надежным и устойчивым к сбоям.</p>
+
+<div class="section-title">Что такое исключение?</div>
+<p>Исключение — это событие, которое возникает во время выполнения программы и нарушает ее нормальный поток. Например, попытка деления на ноль или обращение к несуществующему элементу списка может вызвать исключение.</p>
+
+<div class="subsection-title">Обработка исключений</div>
+<p>Для обработки исключений в Python используется конструкция <code>try...except</code>. Код, который может вызвать исключение, помещается в блок <code>try</code>, а обработка исключения — в блок <code>except</code>:</p>
+
+<pre><code>try:
+    result = 10 / 0
+except ZeroDivisionError:
+    print("Ошибка: Деление на ноль!")</code></pre>
+
+<p>В этом примере, если произойдет ошибка деления на ноль, программа не завершится аварийно, а выведет сообщение об ошибке.</p>
+
+<div class="subsection-title">Множественные исключения</div>
+<p>Вы можете обрабатывать несколько типов исключений, указав их через запятую:</p>
+
+<pre><code>try:
+    value = int(input("Введите число: "))
+except (ValueError, ZeroDivisionError) as e:
+    print(f"Ошибка: {e}")</code></pre>
+
+<p>В этом примере обрабатываются как ошибки преобразования строки в число, так и деления на ноль.</p>
+
+<div class="subsection-title">Блок <code>finally</code></div>
+<p>Блок <code>finally</code> выполняется всегда, независимо от того, произошло исключение или нет. Это полезно для освобождения ресурсов:</p>
+
+<pre><code>try:
+    file = open("file.txt", "r")
+    # Чтение файла
+except FileNotFoundError:
+    print("Файл не найден.")
+finally:
+    file.close()  # Закрытие файла, если он был открыт</code></pre>
+
+<div class="section-title">Создание собственных исключений</div>
+<p>Вы можете создавать собственные исключения, наследуя класс <code>Exception</code>:</p>
+
+<pre><code>class MyCustomError(Exception):
+    pass
+
+try:
+    raise MyCustomError("Это пользовательская ошибка!")
+except MyCustomError as e:
+    print(e)</code></pre>
+
+<div class="section-title">Заключение</div>
+<p>Обработка исключений — важный аспект программирования на Python. Она позволяет вашему коду оставаться устойчивым к ошибкам и обеспечивает более удобный интерфейс для пользователей. Понимание работы с исключениями поможет вам создавать более надежные и безопасные приложения.</p>
+</main>
+
+<footer>
+    <p>&copy; 2024 Dogmood</p>
+</footer>
+
+<script>
+    const title = "Cyber_Basement...";
+    let index = 0;
+
+    function typeTitle() {
+        if (index < title.length) {
+            document.getElementById("site-title").innerHTML += title.charAt(index);
+            index++;
+            setTimeout(typeTitle, 100); // Задержка между буквами (100 мс)
+        }
+    }
+
+    // Запускаем функцию печати заголовка
+    typeTitle();
+</script>
 
 </body>
 </html>

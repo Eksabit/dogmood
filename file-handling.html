@@ -2,9 +2,107 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber_Basement...</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Подключаем CSS файл -->
 </head>
 <body>
+
+<header>
+    <h1 id="site-title"></h1>
+    <nav>
+        <a href="introduction.html">Введение</a>
+        <a href="#installation">Установка</a>
+        <a href="#variables">Переменные</a>
+        <a href="#control-structures">Управляющие структуры</a>
+        <a href="#functions">Функции</a>
+        <a href="#modules">Модули</a>
+        <a href="#exceptions">Исключения</a>
+        <a href="#file-handling">Файлы</a>
+        <a href="#libraries">Библиотеки</a>
+    </nav>
+</header>
+
+<main>
+<div class="main-title">Работа с файлами в Python</div>
+<p>Работа с файлами — это важный аспект программирования, который позволяет сохранять и загружать данные. В Python есть встроенные функции для чтения, записи и обработки данных из файлов.</p>
+
+<div class="section-title">Открытие файла</div>
+<p>Для работы с файлом его необходимо сначала открыть с помощью функции <code>open()</code>. Эта функция принимает два основных параметра: имя файла и режим открытия:</p>
+
+<pre><code>file = open("example.txt", "r")  # Режим чтения</code></pre>
+
+<p>Существуют различные режимы открытия файлов:</p>
+<ul>
+    <li><code>"r"</code> — чтение (по умолчанию);</li>
+    <li><code>"w"</code> — запись (создает новый файл или перезаписывает существующий);</li>
+    <li><code>"a"</code> — добавление (добавляет данные в конец файла);</li>
+    <li><code>"b"</code> — бинарный режим (например, <code>"rb"</code> для чтения бинарных файлов).</li>
+</ul>
+
+<div class="section-title">Чтение из файла</div>
+<p>Существует несколько способов чтения данных из файла:</p>
+
+<div class="subsection-title">Чтение всего файла</div>
+<pre><code>with open("example.txt", "r") as file:
+    content = file.read()
+    print(content)</code></pre>
+
+<p>Использование <code>with</code> автоматически закрывает файл после завершения блока.</p>
+
+<div class="subsection-title">Чтение построчно</div>
+<pre><code>with open("example.txt", "r") as file:
+    for line in file:
+        print(line.strip())  # Удаление символов новой строки</code></pre>
+
+<div class="section-title">Запись в файл</div>
+<p>Для записи данных в файл используйте режим <code>"w"</code> или <code>"a"</code>:</p>
+
+<pre><code>with open("example.txt", "w") as file:
+    file.write("Hello, World!\n")</code></pre>
+
+<p>В этом примере строка будет записана в файл. Если файл уже существует, его содержимое будет перезаписано.</p>
+
+<div class="section-title">Запись нескольких строк</div>
+<p>Вы можете записать несколько строк, используя метод <code>writelines()</code>:</p>
+
+<pre><code>lines = ["Первая строка\n", "Вторая строка\n", "Третья строка\n"]
+with open("example.txt", "w") as file:
+    file.writelines(lines)</code></pre>
+
+<div class="section-title">Обработка ошибок при работе с файлами</div>
+<p>При работе с файлами могут возникать ошибки, такие как отсутствие файла или проблемы с правами доступа. Используйте блок <code>try...except</code> для обработки исключений:</p>
+
+<pre><code>try:
+    with open("example.txt", "r") as file:
+        content = file.read()
+except FileNotFoundError:
+    print("Файл не найден.")</code></pre>
+
+<div class="section-title">Заключение</div>
+<p>Работа с файлами в Python — это мощный инструмент для хранения и обработки данных. Понимание различных режимов открытия файлов, методов чтения и записи, а также обработки ошибок поможет вам эффективно управлять данными в ваших приложениях.</p>
+
+</main>
+
+<footer>
+    <p>&copy; 2024 Dogmood</p>
+</footer>
+
+<script>
+    const title = "Cyber_Basement...";
+    let index = 0;
+
+    function typeTitle() {
+        if (index < title.length) {
+            document.getElementById("site-title").innerHTML += title.charAt(index);
+            index++;
+            setTimeout(typeTitle, 100); // Задержка между буквами (100 мс)
+        }
+    }
+
+    // Запускаем функцию печати заголовка
+    typeTitle();
+</script>
 
 </body>
 </html>
