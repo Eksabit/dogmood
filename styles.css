@@ -129,5 +129,48 @@ pre {
     overflow-x: auto;
 }
 
+/* Стили для выпадающего меню */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    background-color: #4CAF50; /* Цвет кнопки */
+    color: white; /* Цвет текста */
+    padding: 16px; /* Отступы */
+    font-size: 16px; /* Размер шрифта */
+    border: none; /* Убираем границу */
+    cursor: pointer; /* Курсор при наведении */
+}
+
+.dropdown-content {
+    display: none; /* Скрываем подменю по умолчанию */
+    position: absolute; /* Позиционирование */
+    background-color: #f9f9f9; /* Цвет фона */
+    min-width: 160px; /* Минимальная ширина */
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* Тень */
+    z-index: 1; /* Уровень наложения */
+}
+
+.dropdown-content a {
+    color: black; /* Цвет текста */
+    padding: 12px 16px; /* Отступы */
+    text-decoration: none; /* Убираем подчеркивание */
+    display: block; /* Блоковый элемент */
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1; /* Цвет фона при наведении */
+}
+
+.dropdown:hover .dropdown-content {
+    display: block; /* Показываем подменю при наведении на родительский элемент */
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #3e8e41; /* Цвет кнопки при наведении */
+}
+
 
 
