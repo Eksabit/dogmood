@@ -136,6 +136,7 @@ pre {
 }
 
 .dropbtn {
+    font-family: 'Home Video', cursive; /* Используем подключенный шрифт */
     background-color: #4CAF50; /* Цвет кнопки */
     color: white; /* Цвет текста */
     padding: 16px; /* Отступы */
