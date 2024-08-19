@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Разное - Cyber_Basement...</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Подключаем CSS файл -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon"> <!-- Для .ico файла -->
+</head>
+<body>
+
+<header>
+    <a href="https://eksabit.github.io/dogmood/"><h1 id="site-title"></h1></a>
+    <nav>
+        <a href="introduction.html">Введение</a>
+        <a href="installation.html">Установка</a>
+        <a href="variables.html">Переменные</a>
+        <a href="control-structures.html">Управляющие структуры</a>
+        <a href="functions.html">Функции</a>
+        <a href="modules.html">Модули</a>
+        <a href="exceptions.html">Исключения</a>
+        <a href="file-handling.html">Файлы</a>
+        <a href="libraries.html">Библиотеки</a>
+        <a href="other.html">Разное</a> <!-- Ссылка на новую страницу -->
+    </nav>
+</header>
+
+<main>
+    <div class="main-title">Разное</div>
+    <p>На этой странице вы найдете разнообразную полезную информацию о языке программирования Python, включая ссылки на статьи и ресурсы, которые помогут вам лучше понять и использовать Python.</p>
+
+    <div class="section-title">Полезные статьи</div>
+    <ul>
+        <li><a href="help_pip.html" target="_blank">Читать</a> - Справочник по работе с pip и созданию виртуального окружения в Python Python.</li>
+        <!-- Добавьте здесь дополнительные ссылки на статьи -->
+    </ul>
+</main>
+
+<footer>
+    <p>&copy; 2024 Dogmood</p>
+</footer>
+
+<script>
+    const title = "Cyber_Basement...";
+    let index = 0;
+
+    function typeTitle() {
+        if (index < title.length) {
+            document.getElementById("site-title").innerHTML += title.charAt(index);
+            index++;
+            setTimeout(typeTitle, 100); // Задержка между буквами (100 мс)
+        }
+    }
+
+    // Запускаем функцию печати заголовка
+    typeTitle();
+</script>
+
+</body>
+</html>

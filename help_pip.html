@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber_Basement...</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Подключаем CSS файл -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon"> <!-- Для .ico файла -->
+</head>
+<body>
+
+<header>
+    <a href="https://eksabit.github.io/dogmood/"><h1 id="site-title"></h1></a>
+    <nav>
+        <a href="introduction.html">Введение</a>
+        <a href="installation.html">Установка</a>
+        <a href="variables.html">Переменные</a>
+        <a href="control-structures.html">Управляющие структуры</a>
+        <a href="functions.html">Функции</a>
+        <a href="modules.html">Модули</a>
+        <a href="exceptions.html">Исключения</a>
+        <a href="file-handling.html">Файлы</a>
+        <a href="libraries.html">Библиотеки</a>
+    </nav>
+</header>
+
+<main>
+    <div class="main-title">Справочник по работе с pip и созданию виртуального окружения в Python</div>
+    <p>Python — это мощный язык программирования, который широко используется для разработки веб-приложений, анализа данных, автоматизации и многого другого. Одним из ключевых аспектов работы с Python является управление пакетами и создание виртуальных окружений. В этой статье мы рассмотрим, как использовать <code>pip</code> для управления пакетами и как создавать виртуальные окружения.</p>
+
+    <div class="section-title">Установка Python и pip</div>
+    <p>Перед тем как начать, убедитесь, что у вас установлен Python и <code>pip</code>.</p>
+    <ol>
+        <li><strong>Проверка установки Python</strong>: Откройте терминал и введите:
+            <pre><code>python --version</code></pre>
+            или
+            <pre><code>python3 --version</code></pre>
+        </li>
+        <li><strong>Проверка установки pip</strong>: Введите в терминале:
+            <pre><code>pip --version</code></pre>
+            или
+            <pre><code>pip3 --version</code></pre>
+        </li>
+    </ol>
+    <p>Если <code>pip</code> не установлен, вы можете установить его, следуя инструкциям на <a href="https://pip.pypa.io/en/stable/installation/">официальном сайте pip</a>.</p>
+
+    <div class="section-title">Создание виртуального окружения</div>
+    <p>Виртуальные окружения позволяют изолировать зависимости вашего проекта, что предотвращает конфликты между пакетами.</p>
+    <ol>
+        <li><strong>Создание виртуального окружения</strong>: Для создания виртуального окружения используйте команду:
+            <pre><code>python -m venv myenv</code></pre>
+            Замените <code>myenv</code> на желаемое имя вашего окружения.
+        </li>
+        <li><strong>Активация виртуального окружения</strong>:
+            <ul>
+                <li><strong>На Windows</strong>:
+                    <pre><code>myenv\Scripts\activate</code></pre>
+                </li>
+                <li><strong>На macOS и Linux</strong>:
+                    <pre><code>source myenv/bin/activate</code></pre>
+                </li>
+            </ul>
+        </li>
+        <li><strong>Деактивация виртуального окружения</strong>: Чтобы выйти из виртуального окружения, просто введите:
+            <pre><code>deactivate</code></pre>
+        </li>
+    </ol>
+
+    <div class="section-title">Работа с pip</div>
+    <p><code>pip</code> — это инструмент для установки и управления пакетами Python. Вот основные команды, которые вам понадобятся:</p>
+    <ol>
+        <li><strong>Установка пакетов</strong>: Чтобы установить пакет, используйте команду:
+            <pre><code>pip install package_name</code></pre>
+            Замените <code>package_name</code> на имя пакета, который вы хотите установить.
+        </li>
+        <li><strong>Установка конкретной версии пакета</strong>: Чтобы установить конкретную версию пакета, используйте:
+            <pre><code>pip install package_name==version</code></pre>
+        </li>
+        <li><strong>Обновление пакета</strong>: Чтобы обновить пакет до последней версии, используйте:
+            <pre><code>pip install --upgrade package_name</code></pre>
+        </li>
+        <li><strong>Удаление пакета</strong>: Чтобы удалить пакет, используйте:
+            <pre><code>pip uninstall package_name</code></pre>
+        </li>
+        <li><strong>Список установленных пакетов</strong>: Чтобы увидеть список всех установленных пакетов, используйте:
+            <pre><code>pip list</code></pre>
+        </li>
+        <li><strong>Сохранение зависимостей</strong>: Чтобы сохранить список установленных пакетов в файл <code>requirements.txt</code>, используйте:
+            <pre><code>pip freeze > requirements.txt</code></pre>
+        </li>
+        <li><strong>Установка зависимостей из файла</strong>: Чтобы установить пакеты из файла <code>requirements.txt</code>, используйте:
+            <pre><code>pip install -r requirements.txt</code></pre>
+        </li>
+    </ol>
+
+    <div class="section-title">Полезные команды</div>
+    <ul>
+        <li><strong>Проверка информации о пакете</strong>:
+            <pre><code>pip show package_name</code></pre>
+        </li>
+        <li><strong>Поиск пакетов</strong>:
+            <pre><code>pip search search_term</code></pre>
+        </li>
+    </ul>
+
+    <div class="section-title">Заключение</div>
+    <p>Управление пакетами и создание виртуальных окружений — это важные навыки для разработчиков на Python. Используя <code>pip</code> и виртуальные окружения, вы можете эффективно управлять зависимостями вашего проекта и избегать конфликтов между пакетами. Надеемся, что этот справочник поможет вам в вашей работе с Python. Если у вас есть дополнительные вопросы, не стесняйтесь спрашивать!</p>
+</main>
+
+<footer>
+    <p>&copy; 2024 Dogmood</p>
+</footer>
+
+<script>
+    const title = "Cyber_Basement...";
+    let index = 0;
+
+    function typeTitle() {
+        if (index < title.length) {
+            document.getElementById("site-title").innerHTML += title.charAt(index);
+            index++;
+            setTimeout(typeTitle, 100); // Задержка между буквами (100 мс)
+        }
+    }
+
+    // Запускаем функцию печати заголовка
+    typeTitle();
+</script>
+
+</body>
+</html>
