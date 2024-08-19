@@ -5,139 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pac-Man</title>
     <style>
-        canvas {
-            border: 1px solid black;
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
             background-color: black;
+            margin: 0;
+        }
+        canvas {
+            border: 2px solid #fff;
         }
     </style>
 </head>
 <body>
     <canvas id="gameCanvas" width="400" height="400"></canvas>
-    <script>
-        const canvas = document.getElementById('gameCanvas');
-        const ctx = canvas.getContext('2d');
-
-        const tileSize = 20;
-        const rows = 20;
-        const cols = 20;
-
-        // Лабиринт (1 - стена, 0 - проход)
-        const maze = [
-            [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            [1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1],
-            [1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1],
-            [1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1],
-            [1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1],
-            [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-            [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-            [1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1],
-            [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-            [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-        ];
-
-        const pacman = {
-            x: 1,
-            y: 1,
-            size: 10,
-            direction: { x: 0, y: 0 },
-            speed: 1
-        };
-
-        const pellets = [];
-        for (let row = 0; row < rows; row++) {
-            for (let col = 0; col < cols; col++) {
-                if (maze[row][col] === 0) {
-                    pellets.push({
-                        x: col * tileSize + tileSize / 2,
-                        y: row * tileSize + tileSize / 2,
-                        size: 3,
-                        eaten: false
-                    });
-                }
-            }
-        }
-
-        function drawMaze() {
-            for (let row = 0; row < rows; row++) {
-                for (let col = 0; col < cols; col++) {
-                    if (maze[row][col] === 1) {
-                        ctx.fillStyle = 'blue';
-                        ctx.fillRect(col * tileSize, row * tileSize, tileSize, tileSize);
-                    }
-                }
-            }
-        }
-
-        function drawPacman() {
-            ctx.beginPath();
-            ctx.arc(pacman.x * tileSize + tileSize / 2, pacman.y * tileSize + tileSize / 2, pacman.size, 0.2 * Math.PI, 1.8 * Math.PI);
-            ctx.lineTo(pacman.x * tileSize + tileSize / 2, pacman.y * tileSize + tileSize / 2);
-            ctx.fillStyle = 'yellow';
-            ctx.fill();
-            ctx.closePath();
-        }
-
-        function drawPellets() {
-            pellets.forEach(pellet => {
-                if (!pellet.eaten) {
-                    ctx.beginPath();
-                    ctx.arc(pellet.x, pellet.y, pellet.size, 0, Math.PI * 2);
-                    ctx.fillStyle = 'white';
-                    ctx.fill();
-                    ctx.closePath();
-                }
-            });
-        }
-
-        function update() {
-            const newX = pacman.x + pacman.direction.x;
-            const newY = pacman.y + pacman.direction.y;
-
-            // Проверка на столкновение со стенами
-            if (maze[newY][newX] === 0) {
-                pacman.x = newX;
-                pacman.y = newY;
-            }
-
-            // Проверка на сбор точек
-            pellets.forEach(pellet => {
-                const dx = (pacman.x * tileSize + tileSize / 2) - pellet.x;
-                const dy = (pacman.y * tileSize + tileSize / 2) - pellet.y;
-                const distance = Math.sqrt(dx * dx + dy * dy);
-                if (distance < pacman.size + pellet.size && !pellet.eaten) {
-                    pellet.eaten = true;
-                }
-            });
-        }
-
-        function draw() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            drawMaze();
-            drawPacman();
-            drawPellets();
-            update();
-            requestAnimationFrame(draw);
-        }
-
-        document.addEventListener('keydown', (event) => {
-            switch (event.key) {
-                case 'ArrowUp':
-                    pacman.direction = { x: 0, y: -1 };
-                    break;
-                case 'ArrowDown':
-                    pacman.direction = { x: 0, y: 1 };
-                    break;
-                case 'ArrowLeft':
-                    pacman.direction = { x: -1, y: 0 };
-                    break;
-                case 'ArrowRight':
-                    pacman.direction = { x: 1, y: 0 };
-                    break;
-            }
-        });
-
-        draw();
-    </script>
+    <script src="pacman.js"></script>
 </body>
 </html>
