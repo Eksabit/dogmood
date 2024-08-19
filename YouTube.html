@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Поиск по YouTube</title>
+    <script>
+        async function searchYouTube() {
+            const query = document.getElementById('searchQuery').value;
+            const apiKey = 'YOUR_API_KEY'; // Замените на ваш API-ключ
+            const response = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${encodeURIComponent(query)}&key=${apiKey}`);
+            const data = await response.json();
+            const resultsContainer = document.getElementById('results');
+            resultsContainer.innerHTML = '';
+
+            data.items.forEach(item => {
+                const videoId = item.id.videoId;
+                const title = item.snippet.title;
+                const videoElement = document.createElement('div');
+                videoElement.innerHTML = `<h3>${title}</h3><button onclick="loadVideo('${videoId}')">Смотреть</button>`;
+                resultsContainer.appendChild(videoElement);
+            });
+        }
+
+        function loadVideo(videoId) {
+            const iframe = document.getElementById('videoFrame');
+            iframe.src = `https://www.youtube.com/embed/${videoId}`;
+        }
+    </script>
+</head>
+<body>
+    <h1>Поиск по YouTube</h1>
+    <input type="text" id="searchQuery" placeholder="Введите запрос">
+    <button onclick="searchYouTube()">Поиск</button>
+    <div id="results"></div>
+    <h2>Выбранное видео:</h2>
+    <iframe id="videoFrame" width="560" height="315" frameborder="0" allowfullscreen></iframe>
+</body>
+</html>
