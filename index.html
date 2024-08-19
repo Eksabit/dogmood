@@ -6,6 +6,7 @@
     <title>Cyber_Basement...</title>
     <link rel="stylesheet" href="styles.css"> <!-- Подключаем CSS файл -->
     <link rel="icon" href="favicon.ico" type="image/x-icon"> <!-- Для .ico файла -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.0/qrious.min.js"></script>
 </head>
 <body>
 
@@ -51,8 +52,18 @@
 
     <p class="comment">P.S. Я только начинаю свой путь в программировании на Python, и буду очень благодарен за ваши замечания и
         советы! Если у вас есть идеи, как улучшить этот справочник или вы хотите поделиться своим опытом, не
-        стесняйтесь написать мне в Telegram. Ваши отзывы помогут мне стать лучше и сделать этот ресурс более полезным
-        для всех. Спасибо за поддержку и удачи в изучении Python!</p>
+        стесняйтесь написать мне в
+        <a href="#" id="open-popup">Телеграм</a>
+
+        <div class="popup" id="popup">
+            <div class="popup-content">
+                <span class="close" id="close-popup">&times;</span>
+                <h2>QR Код для моего Telegram канала</h2>
+                <canvas id="qr-code"></canvas>
+                <p></p><a href="https://t.me/+BFHkpWtDcvAzNGVi">Link</a></p>
+            </div>
+        </div>. Ваши отзывы помогут мне стать лучше и сделать этот ресурс более полезным
+                для всех. Спасибо за поддержку и удачи в изучении Python!</p>
 </main>
 
 <footer>
@@ -74,6 +85,6 @@
     // Запускаем функцию печати заголовка
     typeTitle();
 </script>
-
+<script src="link_qr.js"></script>
 </body>
 </html>
