@@ -17,29 +17,62 @@
         const canvas = document.getElementById('gameCanvas');
         const ctx = canvas.getContext('2d');
 
+        const tileSize = 20;
+        const rows = 20;
+        const cols = 20;
+
+        // Лабиринт (1 - стена, 0 - проход)
+        const maze = [
+            [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+            [1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1],
+            [1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1],
+            [1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1],
+            [1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1],
+            [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+            [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+            [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+            [1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1],
+            [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+            [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        ];
+
         const pacman = {
-            x: 50,
-            y: 50,
-            size: 15,
+            x: 1,
+            y: 1,
+            size: 10,
             direction: { x: 0, y: 0 },
-            speed: 2
+            speed: 1
         };
 
         const pellets = [];
-        const pelletCount = 50;
-        for (let i = 0; i < pelletCount; i++) {
-            pellets.push({
-                x: Math.random() * (canvas.width - 10) + 5,
-                y: Math.random() * (canvas.height - 10) + 5,
-                size: 5,
-                eaten: false
-            });
+        for (let row = 0; row < rows; row++) {
+            for (let col = 0; col < cols; col++) {
+                if (maze[row][col] === 0) {
+                    pellets.push({
+                        x: col * tileSize + tileSize / 2,
+                        y: row * tileSize + tileSize / 2,
+                        size: 3,
+                        eaten: false
+                    });
+                }
+            }
+        }
+
+        function drawMaze() {
+            for (let row = 0; row < rows; row++) {
+                for (let col = 0; col < cols; col++) {
+                    if (maze[row][col] === 1) {
+                        ctx.fillStyle = 'blue';
+                        ctx.fillRect(col * tileSize, row * tileSize, tileSize, tileSize);
+                    }
+                }
+            }
         }
 
         function drawPacman() {
             ctx.beginPath();
-            ctx.arc(pacman.x, pacman.y, pacman.size, 0.2 * Math.PI, 1.8 * Math.PI);
-            ctx.lineTo(pacman.x, pacman.y);
+            ctx.arc(pacman.x * tileSize + tileSize / 2, pacman.y * tileSize + tileSize / 2, pacman.size, 0.2 * Math.PI, 1.8 * Math.PI);
+            ctx.lineTo(pacman.x * tileSize + tileSize / 2, pacman.y * tileSize + tileSize / 2);
             ctx.fillStyle = 'yellow';
             ctx.fill();
             ctx.closePath();
@@ -58,19 +91,19 @@
         }
 
         function update() {
-            pacman.x += pacman.direction.x * pacman.speed;
-            pacman.y += pacman.direction.y * pacman.speed;
+            const newX = pacman.x + pacman.direction.x;
+            const newY = pacman.y + pacman.direction.y;
 
-            // Проверка границ
-            if (pacman.x < pacman.size) pacman.x = pacman.size;
-            if (pacman.x > canvas.width - pacman.size) pacman.x = canvas.width - pacman.size;
-            if (pacman.y < pacman.size) pacman.y = pacman.size;
-            if (pacman.y > canvas.height - pacman.size) pacman.y = canvas.height - pacman.size;
+            // Проверка на столкновение со стенами
+            if (maze[newY][newX] === 0) {
+                pacman.x = newX;
+                pacman.y = newY;
+            }
 
             // Проверка на сбор точек
             pellets.forEach(pellet => {
-                const dx = pacman.x - pellet.x;
-                const dy = pacman.y - pellet.y;
+                const dx = (pacman.x * tileSize + tileSize / 2) - pellet.x;
+                const dy = (pacman.y * tileSize + tileSize / 2) - pellet.y;
                 const distance = Math.sqrt(dx * dx + dy * dy);
                 if (distance < pacman.size + pellet.size && !pellet.eaten) {
                     pellet.eaten = true;
@@ -80,6 +113,7 @@
 
         function draw() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
+            drawMaze();
             drawPacman();
             drawPellets();
             update();
