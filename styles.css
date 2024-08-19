@@ -42,6 +42,8 @@ h2, h3 {
 }
 
 a {
+    font-family: 'Home Video', cursive; /* Устанавливаем шрифт для ссылок в навигации */
+    color: #39a102;
     text-decoration: none; /* Убираем подчеркивание у ссылок */
 }
 
