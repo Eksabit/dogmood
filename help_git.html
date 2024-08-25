@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber_Basement...</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Подключаем CSS файл -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon"> <!-- Для .ico файла -->
+</head>
+<body>
+
+<header>
+    <a href="https://eksabit.github.io/dogmood/"><h1 id="site-title"></h1></a>
+    <nav>
+        <a href="introduction.html">Введение</a>
+        <a href="installation.html">Установка</a>
+        <a href="variables.html">Переменные</a>
+        <a href="control-structures.html">Управляющие структуры</a>
+        <a href="functions.html">Функции</a>
+        <a href="modules.html">Модули</a>
+        <a href="exceptions.html">Исключения</a>
+        <a href="file-handling.html">Файлы</a>
+        <a href="libraries.html">Библиотеки</a>
+        <a href="other.html">Разное</a>
+    </nav>
+</header>
+
+<main>
+    <div class="main-title">Справочник по работе с Git на Windows, Linux и macOS</div>
+    <p>Git — это система контроля версий, которая позволяет разработчикам отслеживать изменения в коде, работать над проектами совместно и управлять версиями программного обеспечения. В этом справочнике мы рассмотрим основные команды и концепции, которые помогут вам начать работу с Git на различных операционных системах: Windows, Linux и macOS.</p>
+
+    <div class="section-title">Установка Git</div>
+    <h3>Windows</h3>
+    <ol>
+        <li><strong>Скачивание и установка:</strong>
+            <ul>
+                <li>Перейдите на <a href="https://git-scm.com/download/win">официальный сайт Git</a>.</li>
+                <li>Скачайте установочный файл для Windows.</li>
+                <li>Запустите установщик и следуйте инструкциям. Рекомендуется оставить настройки по умолчанию, если вы не уверены в своих предпочтениях.</li>
+            </ul>
+        </li>
+        <li><strong>Git Bash:</strong>
+            <ul>
+                <li>После установки Git на Windows вы получите доступ к <strong>Git Bash</strong> — терминалу, который позволяет использовать команды Git в среде, похожей на Unix.</li>
+            </ul>
+        </li>
+    </ol>
+
+    <h3>Linux</h3>
+    <ol>
+        <li><strong>Установка через пакетный менеджер:</strong>
+            <ul>
+                <li>Для Ubuntu и Debian:
+                    <pre><code>sudo apt-get install git</code></pre>
+                </li>
+                <li>Для Fedora:
+                    <pre><code>sudo dnf install git</code></pre>
+                </li>
+                <li>Для Arch Linux:
+                    <pre><code>sudo pacman -S git</code></pre>
+                </li>
+            </ul>
+        </li>
+    </ol>
+
+    <h3>macOS</h3>
+    <ol>
+        <li><strong>Установка через Homebrew:</strong>
+            <pre><code>brew install git</code></pre>
+        </li>
+        <li><strong>Установка через Xcode Command Line Tools:</strong>
+            <pre><code>xcode-select --install</code></pre>
+        </li>
+    </ol>
+
+    <div class="section-title">Настройка Git</div>
+    <p>После установки Git необходимо настроить ваше имя и адрес электронной почты, которые будут использоваться в коммитах. Выполните следующие команды в терминале (Git Bash на Windows, терминал на Linux и macOS):</p>
+    <pre><code>git config --global user.name "Ваше Имя"
+git config --global user.email "ваш.email@example.com"</code></pre>
+
+    <div class="section-title">Основные команды Git</div>
+    <ol>
+        <li><strong>Создание нового репозитория:</strong>
+            <pre><code>git init имя_репозитория</code></pre>
+        </li>
+        <li><strong>Клонирование существующего репозитория:</strong>
+            <pre><code>git clone URL_репозитория</code></pre>
+        </li>
+        <li><strong>Проверка статуса:</strong>
+            <pre><code>git status</code></pre>
+        </li>
+        <li><strong>Добавление изменений в индекс:</strong>
+            <pre><code>git add имя_файла</code></pre>
+            <p>Чтобы добавить все изменения, выполните:</p>
+            <pre><code>git add .</code></pre>
+        </li>
+        <li><strong>Коммит изменений:</strong>
+            <pre><code>git commit -m "Сообщение коммита"</code></pre>
+        </li>
+        <li><strong>Просмотр истории коммитов:</strong>
+            <pre><code>git log</code></pre>
+        </li>
+        <li><strong>Создание новой ветки:</strong>
+            <pre><code>git branch имя_ветки</code></pre>
+        </li>
+        <li><strong>Переключение на ветку:</strong>
+            <pre><code>git checkout имя_ветки</code></pre>
+        </li>
+        <li><strong>Слияние веток:</strong>
+            <pre><code>git merge имя_ветки</code></pre>
+        </li>
+        <li><strong>Удаление ветки:</strong>
+            <pre><code>git branch -d имя_ветки</code></pre>
+        </li>
+        <li><strong>Отправка изменений на удаленный репозиторий:</strong>
+            <pre><code>git push origin имя_ветки</code></pre>
+        </li>
+        <li><strong>Получение изменений из удаленного репозитория:</strong>
+            <pre><code>git pull origin имя_ветки</code></pre>
+        </li>
+    </ol>
+
+    <div class="section-title">Работа с удаленными репозиториями</div>
+    <ol>
+        <li><strong>Добавление удаленного репозитория:</strong>
+            <pre><code>git remote add origin URL_репозитория</code></pre>
+        </li>
+        <li><strong>Просмотр удаленных репозиториев:</strong>
+            <pre><code>git remote -v</code></pre>
+        </li>
+        <li><strong>Удаление удаленного репозитория:</strong>
+            <pre><code>git remote remove имя_репозитория</code></pre>
+        </li>
+    </ol>
+
+    <div class="section-title">Полезные команды</div>
+    <ul>
+        <li><strong>Отмена изменений в файле:</strong>
+            <pre><code>git checkout -- имя_файла</code></pre>
+        </li>
+        <li><strong>Сброс коммита (не удаляя изменения):</strong>
+            <pre><code>git reset --soft HEAD~1</code></pre>
+        </li>
+        <li><strong>Сброс коммита (удалив изменения):</strong>
+            <pre><code>git reset --hard HEAD~1</code></pre>
+        </li>
+    </ul>
+
+    <div class="section-title">Дополнительные советы</div>
+    <h3>Windows</h3>
+    <ul>
+        <li><strong>Использование SSH для аутентификации:</strong> Настройте SSH-ключи для безопасного доступа к удаленным репозиториям. Создайте SSH-ключ с помощью команды:
+            <pre><code>ssh-keygen -t rsa -b 4096 -C "ваш.email@example.com"</code></pre>
+        </li>
+        <li><strong>Интеграция с IDE:</strong> Многие IDE, такие как Visual Studio Code, имеют встроенную поддержку Git, что позволяет выполнять команды Git прямо из интерфейса.</li>
+    </ul>
+
+    <h3>Linux и macOS</h3>
+    <ul>
+        <li><strong>Использование терминала:</strong> В Linux и macOS вы можете использовать встроенный терминал для выполнения команд Git. Убедитесь, что вы знакомы с основными командами терминала.</li>
+        <li><strong>Настройка SSH:</strong> Аналогично Windows, настройте SSH-ключи для безопасного доступа к удаленным репозиториям.</li>
+    </ul>
+
+    <div class="section-title">Заключение</div>
+    <p>Этот справочник по Git охватывает основные команды и концепции, которые помогут вам начать работу с системой контроля версий на Windows, Linux и macOS. Git — мощный инструмент, и его изучение откроет новые возможности для управления проектами и совместной работы. Для более глубокого изучения рекомендуется ознакомиться с <a href="https://git-scm.com/doc">официальной документацией Git</a> и различными учебными ресурсами.</p>
+</main>
+
+<footer>
+    <p>&copy; 2024 Dogmood</p>
+</footer>
+
+<script>
+    const title = "Cyber_Basement...";
+    let index = 0;
+
+    function typeTitle() {
+        if (index < title.length) {
+            document.getElementById("site-title").innerHTML += title.charAt(index);
+            index++;
+            setTimeout(typeTitle, 100); // Задержка между буквами (100 мс)
+        }
+    }
+
+    // Запускаем функцию печати заголовка
+    typeTitle();
+</script>
+
+</body>
+</html>
