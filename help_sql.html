@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber_Basement...</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Подключаем CSS файл -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon"> <!-- Для .ico файла -->
+</head>
+<body>
+
+<header>
+    <a href="https://eksabit.github.io/dogmood/"><h1 id="site-title"></h1></a>
+    <nav>
+        <a href="introduction.html">Введение</a>
+        <a href="installation.html">Установка</a>
+        <a href="variables.html">Переменные</a>
+        <a href="control-structures.html">Управляющие структуры</a>
+        <a href="functions.html">Функции</a>
+        <a href="modules.html">Модули</a>
+        <a href="exceptions.html">Исключения</a>
+        <a href="file-handling.html">Файлы</a>
+        <a href="libraries.html">Библиотеки</a>
+        <a href="other.html">Разное</a>
+    </nav>
+</header>
+
+<main>
+    <div class="main-title">Справочник по работе с SQL</div>
+    <p>SQL (Structured Query Language) — это стандартный язык для работы с реляционными базами данных. Он используется для выполнения различных операций с данными, включая создание, чтение, обновление и удаление данных. В этом справочнике мы рассмотрим основные команды и концепции SQL.</p>
+
+    <div class="section-title">Основные команды SQL</div>
+    <ol>
+        <li><strong>Создание базы данных:</strong>
+            <pre><code>CREATE DATABASE имя_базы_данных;</code></pre>
+        </li>
+        <li><strong>Удаление базы данных:</strong>
+            <pre><code>DROP DATABASE имя_базы_данных;</code></pre>
+        </li>
+        <li><strong>Создание таблицы:</strong>
+            <pre><code>CREATE TABLE имя_таблицы (
+    столбец1 тип_данных,
+    столбец2 тип_данных,
+    ...
+);</code></pre>
+        </li>
+        <li><strong>Удаление таблицы:</strong>
+            <pre><code>DROP TABLE имя_таблицы;</code></pre>
+        </li>
+        <li><strong>Вставка данных:</strong>
+            <pre><code>INSERT INTO имя_таблицы (столбец1, столбец2, ...)
+VALUES (значение1, значение2, ...);</code></pre>
+        </li>
+        <li><strong>Обновление данных:</strong>
+            <pre><code>UPDATE имя_таблицы
+SET столбец1 = значение1, столбец2 = значение2
+WHERE условие;</code></pre>
+        </li>
+        <li><strong>Удаление данных:</strong>
+            <pre><code>DELETE FROM имя_таблицы
+WHERE условие;</code></pre>
+        </li>
+        <li><strong>Выборка данных:</strong>
+            <pre><code>SELECT столбец1, столбец2, ...
+FROM имя_таблицы
+WHERE условие;</code></pre>
+        </li>
+    </ol>
+
+    <div class="section-title">Фильтрация и сортировка данных</div>
+    <ol>
+        <li><strong>Фильтрация данных:</strong>
+            <pre><code>SELECT * FROM имя_таблицы
+WHERE условие;</code></pre>
+        </li>
+        <li><strong>Сортировка данных:</strong>
+            <pre><code>SELECT * FROM имя_таблицы
+ORDER BY столбец1 ASC|DESC;</code></pre>
+        </li>
+    </ol>
+
+    <div class="section-title">Агрегация данных</div>
+    <ol>
+        <li><strong>Подсчет количества записей:</strong>
+            <pre><code>SELECT COUNT(*) FROM имя_таблицы;</code></pre>
+        </li>
+        <li><strong>Суммирование значений:</strong>
+            <pre><code>SELECT SUM(столбец) FROM имя_таблицы;</code></pre>
+        </li>
+        <li><strong>Нахождение среднего значения:</strong>
+            <pre><code>SELECT AVG(столбец) FROM имя_таблицы;</code></pre>
+        </li>
+        <li><strong>Нахождение максимального значения:</strong>
+            <pre><code>SELECT MAX(столбец) FROM имя_таблицы;</code></pre>
+        </li>
+        <li><strong>Нахождение минимального значения:</strong>
+            <pre><code>SELECT MIN(столбец) FROM имя_таблицы;</code></pre>
+        </li>
+    </ol>
+
+    <div class="section-title">Соединение таблиц</div>
+    <p>Для объединения данных из нескольких таблиц используется оператор <strong>JOIN</strong>.</p>
+    <ol>
+        <li><strong>Внутреннее соединение:</strong>
+            <pre><code>SELECT столбцы
+FROM таблица1
+INNER JOIN таблица2 ON таблица1.столбец = таблица2.столбец;</code></pre>
+        </li>
+        <li><strong>Левое соединение:</strong>
+            <pre><code>SELECT столбцы
+FROM таблица1
+LEFT JOIN таблица2 ON таблица1.столбец = таблица2.столбец;</code></pre>
+        </li>
+        <li><strong>Правое соединение:</strong>
+            <pre><code>SELECT столбцы
+FROM таблица1
+RIGHT JOIN таблица2 ON таблица1.столбец = таблица2.столбец;</code></pre>
+        </li>
+    </ol>
+
+    <div class="section-title">Заключение</div>
+    <p>SQL — это мощный инструмент для работы с реляционными базами данных. Освоив основные команды и концепции, вы сможете эффективно управлять данными и выполнять сложные запросы. Для более глубокого изучения SQL рекомендуется ознакомиться с документацией и учебными ресурсами, такими как <a href="https://www.w3schools.com/sql/">W3Schools SQL Tutorial</a>.</p>
+</main>
+
+<footer>
+    <p>&copy; 2024 Dogmood</p>
+</footer>
+
+<script>
+    const title = "Cyber_Basement...";
+    let index = 0;
+
+    function typeTitle() {
+        if (index < title.length) {
+            document.getElementById("site-title").innerHTML += title.charAt(index);
+            index++;
+            setTimeout(typeTitle, 100); // Задержка между буквами (100 мс)
+        }
+    }
+
+    // Запускаем функцию печати заголовка
+    typeTitle();
+</script>
+
+</body>
+</html>
