@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber_Basement...</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Подключаем CSS файл -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon"> <!-- Для .ico файла -->
+</head>
+<body>
+
+<header>
+    <a href="https://eksabit.github.io/dogmood/"><h1 id="site-title"></h1></a>
+    <nav>
+        <a href="introduction.html">Введение</a>
+        <a href="installation.html">Установка</a>
+        <a href="variables.html">Переменные</a>
+        <a href="control-structures.html">Управляющие структуры</a>
+        <a href="functions.html">Функции</a>
+        <a href="modules.html">Модули</a>
+        <a href="exceptions.html">Исключения</a>
+        <a href="file-handling.html">Файлы</a>
+        <a href="libraries.html">Библиотеки</a>
+        <a href="other.html">Разное</a>
+    </nav>
+</header>
+
+<main>
+    <div class="main-title">Справочник по работе с Docker</div>
+    <p>Docker — это платформа для разработки, доставки и запуска приложений в контейнерах. Контейнеры позволяют упаковывать приложения и их зависимости в единый образ, который можно запускать на любой системе, поддерживающей Docker. В этом справочнике мы рассмотрим, как установить и использовать Docker на Windows, Linux и macOS.</p>
+
+    <div class="section-title">Установка Docker</div>
+
+    <div class="section-title">Windows</div>
+    <ol>
+        <li><strong>Системные требования:</strong>
+            <p>Windows 10 64-bit: Pro, Enterprise или Education (Build 15063 или выше). Включите поддержку виртуализации в BIOS.</p>
+        </li>
+        <li><strong>Установка:</strong>
+            <p>Скачайте Docker Desktop с <a href="https://www.docker.com/products/docker-desktop">официального сайта Docker</a>. Запустите установочный файл и следуйте инструкциям. После установки запустите Docker Desktop и дождитесь его инициализации.</p>
+        </li>
+        <li><strong>Проверка установки:</strong>
+            <pre><code>docker --version</code></pre>
+        </li>
+    </ol>
+
+    <div class="section-title">Linux</div>
+    <ol>
+        <li><strong>Системные требования:</strong>
+            <p>Поддержка 64-битных систем. Ядро Linux версии 3.10 или выше.</p>
+        </li>
+        <li><strong>Установка:</strong>
+            <p>Для Ubuntu:</p>
+            <pre><code>sudo apt update
+sudo apt install apt-transport-https ca-certificates curl software-properties-common
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+sudo apt update
+sudo apt install docker-ce</code></pre>
+            <p>Для CentOS:</p>
+            <pre><code>sudo yum install -y yum-utils
+sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+sudo yum install docker-ce</code></pre>
+        </li>
+        <li><strong>Запуск Docker:</strong>
+            <pre><code>sudo systemctl start docker
+sudo systemctl enable docker</code></pre>
+        </li>
+        <li><strong>Проверка установки:</strong>
+            <pre><code>docker --version</code></pre>
+        </li>
+    </ol>
+
+    <div class="section-title">macOS</div>
+    <ol>
+        <li><strong>Системные требования:</strong>
+            <p>macOS 10.14 или выше.</p>
+        </li>
+        <li><strong>Установка:</strong>
+            <p>Скачайте Docker Desktop с <a href="https://www.docker.com/products/docker-desktop">официального сайта Docker</a>. Откройте загруженный файл и перетащите иконку Docker в папку "Программы". Запустите Docker из папки "Программы".</p>
+        </li>
+        <li><strong>Проверка установки:</strong>
+            <pre><code>docker --version</code></pre>
+        </li>
+    </ol>
+
+    <div class="section-title">Основные команды Docker</div>
+
+    <div class="section-title">Работа с образами</div>
+    <ol>
+        <li><strong>Список образов:</strong>
+            <pre><code>docker images</code></pre>
+        </li>
+        <li><strong>Скачивание образа:</strong>
+            <pre><code>docker pull &lt;имя_образа&gt;</code></pre>
+        </li>
+        <li><strong>Удаление образа:</strong>
+            <pre><code>docker rmi &lt;имя_образа&gt;</code></pre>
+        </li>
+    </ol>
+
+    <div class="section-title">Работа с контейнерами</div>
+    <ol>
+        <li><strong>Запуск контейнера:</strong>
+            <pre><code>docker run &lt;опции&gt; &lt;имя_образа&gt;</code></pre>
+        </li>
+        <li><strong>Список запущенных контейнеров:</strong>
+            <pre><code>docker ps</code></pre>
+        </li>
+        <li><strong>Список всех контейнеров:</strong>
+            <pre><code>docker ps -a</code></pre>
+        </li>
+        <li><strong>Остановка контейнера:</strong>
+            <pre><code>docker stop &lt;имя_или_ID_контейнера&gt;</code></pre>
+        </li>
+        <li><strong>Удаление контейнера:</strong>
+            <pre><code>docker rm &lt;имя_или_ID_контейнера&gt;</code></pre>
+        </li>
+    </ol>
+
+    <div class="section-title">Работа с Dockerfile</div>
+    <ol>
+        <li><strong>Создание Dockerfile:</strong>
+            <pre><code># Используем базовый образ
+FROM ubuntu:latest
+
+# Установка зависимостей
+RUN apt-get update && apt-get install -y python3
+
+# Копирование файлов
+COPY . /app
+
+# Установка рабочей директории
+WORKDIR /app
+
+# Команда для запуска приложения
+CMD ["python3", "app.py"]</code></pre>
+        </li>
+        <li><strong>Сборка образа:</strong>
+            <pre><code>docker build -t &lt;имя_образа&gt; .</code></pre>
+        </li>
+        <li><strong>Запуск контейнера из образа:</strong>
+            <pre><code>docker run &lt;имя_образа&gt;</code></pre>
+        </li>
+    </ol>
+
+    <div class="section-title">Полезные советы</div>
+    <ol>
+        <li><strong>Docker Compose:</strong> Используйте Docker Compose для управления многоконтейнерными приложениями. Создайте файл <code>docker-compose.yml</code> и используйте команду <code>docker-compose up</code> для запуска всех сервисов.</li>
+        <li><strong>Документация:</strong> Ознакомьтесь с <a href="https://docs.docker.com/">официальной документацией Docker</a> для получения более подробной информации и примеров.</li>
+        <li><strong>Безопасность:</strong> Следите за безопасностью ваших контейнеров и образов, обновляйте их и используйте только проверенные образы.</li>
+    </ol>
+
+    <div class="section-title">Заключение</div>
+    <p>Docker — мощный инструмент для разработки и развертывания приложений. С помощью этого справочника вы сможете установить Docker на Windows, Linux и macOS, а также освоить основные команды и принципы работы с контейнерами и образами.</p>
+</main>
+
+<footer>
+    <p>&copy; 2024 Dogmood</p>
+</footer>
+
+<script>
+    const title = "Cyber_Basement...";
+    let index = 0;
+
+    function typeTitle() {
+        if (index < title.length) {
+            document.getElementById("site-title").innerHTML += title.charAt(index);
+            index++;
+            setTimeout(typeTitle, 100); // Задержка между буквами (100 мс)
+        }
+    }
+
+    // Запускаем функцию печати заголовка
+    typeTitle();
+</script>
+
+</body>
+</html>
