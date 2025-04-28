@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Команды Git</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .command {
+            background-color: #1e1e1e;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 10px 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            transition: transform 0.2s;
+        }
+        .command:hover {
+            transform: scale(1.02);
+        }
+        pre {
+            margin: 0;
+            font-family: 'Courier New', Courier, monospace;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Команды Git</h1>
+
+    <div class="command">
+        <pre>git init  # Создает новый Git-репозиторий в текущей директории</pre>
+    </div>
+    <div class="command">
+        <pre>git clone &lt;url&gt;  # Клонирует репозиторий по указанному URL</pre>
+    </div>
+    <div class="command">
+        <pre>git status  # Показывает текущее состояние рабочего каталога и индекса</pre>
+    </div>
+    <div class="command">
+        <pre>git ls-files # Файлы в индексе</pre>
+    </div>
+    <div class="command">
+        <pre>git add &lt;файл&gt;  # Добавляет конкретный файл в индекс для следующего коммита</pre>
+    </div>
+    <div class="command">
+        <pre>git add .       # Добавляет все изменения в текущей директории в индекс</pre>
+    </div>
+    <div class="command">
+        <pre>git commit -m "Сообщение коммита"  # Сохраняет изменения в репозитории с сообщением</pre>
+    </div>
+    <div class="command">
+        <pre>git log  # Показывает список всех коммитов в репозитории</pre>
+    </div>
+    <div class="command">
+        <pre>git log --oneline # показывает в одну линию все комиты</pre>
+    </div>
+    <div class="command">
+        <pre>git diff              # Показывает изменения в рабочем каталоге по сравнению с последним коммитом</pre>
+    </div>
+    <div class="command">
+        <pre>git diff --cached     # Показывает изменения, добавленные в индекс, по сравнению с последним коммитом</pre>
+    </div>
+    <div class="command">
+        <pre>git branch &lt;имя-ветки&gt;  # Создает новую ветку с указанным именем</pre>
+    </div>
+    <div class="command">
+        <pre>git checkout &lt;имя-ветки&gt;  # Переключается на указанную ветку</pre>
+    </div>
+    <div class="command">
+        <pre>git checkout -f &lt;имя-ветки&gt;  # Переключается не сохраняя изменения</pre>
+    </div>
+    <div class="command">
+        <pre>git checkout -b &lt;имя-ветки&gt;  # Создает новую ветку и сразу переключается на нее</pre>
+    </div>
+    <div class="command">
+        <pre>git merge &lt;имя-ветки&gt;  # Сливает указанную ветку с текущей веткой</pre>
+    </div>
+    <div class="command">
+        <pre>git branch -d &lt;имя-ветки&gt;  # Удаляет указанную ветку</pre>
+    </div>
+    <div class="command">
+        <pre>git remote add &lt;имя&gt; &lt;url&gt;  # Добавляет удалённый репозиторий с указанным именем и URL</pre>
+    </div>
+    <div class="command">
+        <pre>git fetch &lt;имя&gt;  # Получает изменения из удалённого репозитория, но не сливает их</pre>
+    </div>
+    <div class="command">
+        <pre>git pull &lt;имя&gt; &lt;ветка&gt;  # Получает и сливает изменения из удалённого репозитория</pre>
+    </div>
+    <div class="command">
+        <pre>git push &lt;имя&gt; &lt;ветка&gt;  # Отправляет изменения в указанную ветку удалённого репозитория</pre>
+    </div>
+    <div class="command">
+        <pre>git checkout -- &lt;файл&gt;  # Отменяет изменения в указанном файле, возвращая его к последнему коммиту</pre>
+    </div>
+    <div class="command">
+        <pre>git reset --hard  # Сбрасывает индекс и рабочий каталог к последнему коммиту, удаляя все несохраненные изменения</pre>
+    </div>
+    <div class="command">
+        <pre>git tag &lt;имя-тега&gt;  # Создает новый тег с указанным именем</pre>
+    </div>
+    <div class="command">
+        <pre>git tag  # Показывает все теги в репозитории</pre>
+    </div>
+    <div class="command">
+        <pre>git add . # Добавляет все файлы в текущей дериктории в репозиторий</pre>
+    </div>
+    <div class="command">
+        <pre>git ls-files --cached # Все файлы которые находятся в индексе</pre>
+    </div>
+
+</body>
+</html>
