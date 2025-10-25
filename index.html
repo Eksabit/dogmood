@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Справочник по Python</title>
+    
+    <style>
+        /* ------------------------- */
+        /* --- Глобальные стили (Тема) --- */
+        /* ------------------------- */
+        
+        :root {
+            --bg-color: #121212;         /* Основной фон */
+            --primary-bg: #1e1e1e;     /* Фон для меню и карточек */
+            --text-color: #e0e0e0;     /* Основной текст */
+            --header-color: #ffffff;   /* Заголовки */
+            --accent-color: #4dabf7;   /* Акцентный цвет (ссылки, бордеры) */
+            --code-bg: #2a2a2a;        /* Фон для кода */
+            --border-color: #333;      /* Разделители */
+            --header-height: 60px;     /* Высота мобильного хедера */
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            /* Плавная прокрутка при клике на якорные ссылки */
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            display: flex;
+        }
+
+        /* ------------------------- */
+        /* --- Боковое меню (Desktop) --- */
+        /* ------------------------- */
+        
+        .sidebar {
+            width: 280px;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: var(--primary-bg);
+            border-right: 1px solid var(--border-color);
+            padding: 20px;
+            overflow-y: auto; /* Для прокрутки меню, если оно длинное */
+        }
+
+        .sidebar-header {
+            font-size: 1.5rem;
+            color: var(--header-color);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--accent-color);
+        }
+
+        .sidebar-nav {
+            list-style: none;
+        }
+
+        .sidebar-nav li a {
+            display: block;
+            color: var(--text-color);
+            text-decoration: none;
+            padding: 10px 5px;
+            border-radius: 4px;
+            transition: background-color 0.2s ease;
+        }
+
+        .sidebar-nav li a:hover,
+        .sidebar-nav li a:focus {
+            background-color: var(--code-bg);
+            color: var(--header-color);
+        }
+
+        .sidebar-nav .nav-section-title {
+            color: var(--accent-color);
+            font-weight: bold;
+            margin-top: 20px;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+
+        /* ------------------------- */
+        /* --- Мобильный хедер --- */
+        /* ------------------------- */
+
+        .mobile-header {
+            display: none; /* Скрыт по умолчанию на ПК */
+            background-color: var(--primary-bg);
+            border-bottom: 1px solid var(--border-color);
+            padding: 0 20px;
+            height: var(--header-height);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1001; /* Поверх всего */
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .mobile-header .logo {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--header-color);
+        }
+
+        .hamburger-btn {
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 28px;
+            cursor: pointer;
+        }
+
+        /* ------------------------- */
+        /* --- Основной контент --- */
+        /* ------------------------- */
+
+        .content {
+            /* 280px - ширина бокового меню */
+            margin-left: 280px; 
+            padding: 40px;
+            width: 100%;
+        }
+
+        .content section {
+            margin-bottom: 40px;
+            /* Сдвигаем "якорь" вниз, чтобы заголовок не прятался под хедером на мобилке */
+            scroll-margin-top: 80px; 
+        }
+
+        h1, h2, h3 {
+            color: var(--header-color);
+            margin-bottom: 15px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        h1 { font-size: 2.5rem; border-bottom-width: 2px; border-bottom-color: var(--accent-color); }
+        h2 { font-size: 2rem; }
+        h3 { font-size: 1.5rem; }
+
+        p, ul {
+            margin-bottom: 15px;
+        }
+        
+        ul {
+            padding-left: 20px;
+        }
+        
+        li {
+            margin-bottom: 5px;
+        }
+
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Стилизация кода */
+        code {
+            background-color: var(--code-bg);
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+            font-size: 0.95em;
+        }
+
+        pre {
+            background-color: var(--code-bg);
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto; /* Горизонтальная прокрутка для длинного кода */
+        }
+        
+        pre code {
+            padding: 0;
+            background: none;
+        }
+        
+        /* ------------------------- */
+        /* --- Адаптивность (Mobile) --- */
+        /* ------------------------- */
+
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+            }
+
+            /* Показываем мобильный хедер */
+            .mobile-header {
+                display: flex;
+            }
+
+            /* Переделываем боковое меню в выпадающий список */
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: fixed; /* Фиксируем под хедером */
+                top: var(--header-height); /* Сдвигаем под хедер */
+                left: 0;
+                z-index: 1000; /* Под хедером, но над контентом */
+                
+                /* Скрываем его по умолчанию */
+                display: none;
+                
+                /* Ограничиваем высоту, чтобы можно было скроллить, если не влезает */
+                max-height: calc(100vh - var(--header-height));
+                overflow-y: auto;
+                border-bottom: 1px solid var(--border-color);
+            }
+            
+            /* Класс .open, который будет добавляться через JS */
+            .sidebar.open {
+                display: block;
+            }
+            
+            /* Убираем отступ слева у контента... */
+            .content {
+                margin-left: 0;
+                /* ... и добавляем отступ сверху, чтобы контент не уезжал под хедер */
+                padding-top: calc(var(--header-height) + 20px);
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+            
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.75rem; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <header class="mobile-header">
+        <span class="logo">Python Справочник</span>
+        <button id="hamburger-btn" class="hamburger-btn" aria-label="Открыть меню">
+            &#9776;
+        </button>
+    </header>
+
+    <nav class="sidebar" id="sidebar-nav">
+        <div class="sidebar-header">
+            Python
+        </div>
+        <ul class="sidebar-nav">
+            <li><a href="#intro">Введение</a></li>
+            <li><a href="#basics">Основы языка</a></li>
+            <li><a href="#data-structures">Структуры данных</a></li>
+            <li><a href="#functions">Функции и модули</a></li>
+            <li><a href="#oop">Классы (ООП)</a></li>
+            <li><a href="#error-handling">Обработка ошибок</a></li>
+            <li><a href="#file-io">Работа с файлами</a></li>
+            <li><a href="#std-lib">Стандартная библиотека</a></li>
+            
+            <li class="nav-section-title">Для опытных</li>
+            <li><a href="#decorators">Декораторы</a></li>
+            <li><a href="#generators">Генераторы</a></li>
+            <li><a href="#async">Asyncio</a></li>
+
+            <li class="nav-section-title">Полезные ссылки</li>
+            <li><a href="https://docs.python.org/3/" target="_blank" rel="noopener">Оф. документация</a></li>
+            <li><a href="https://pypi.org/" target="_blank" rel="noopener">PyPI (Пакеты)</a></li>
+        </ul>
+    </nav>
+
+    <main class="content">
+        <section id="intro">
+            <h1>Справочник по Python</h1>
+            <p>Добро пожаловать в краткий справочник по языку программирования Python. Этот сайт предназначен как для начинающих, так и для опытных разработчиков, которым нужно быстро освежить в памяти синтаксис или концепции.</p>
+        </section>
+
+        <section id="basics">
+            <h2>Основы языка</h2>
+            <p>Python - это высокоуровневый, интерпретируемый язык с динамической типипизацией. Он известен своим чистым и читаемым синтаксисом.</p>
+
+            <h3>Переменные и типы данных</h3>
+            <p>Переменные объявляются простым присваиванием. Тип определяется автоматически.</p>
+<pre><code>
+# Комментарии начинаются с '#'
+name = "Alice"  # str (строка)
+age = 30        # int (целое число)
+height = 1.75   # float (число с плавающей точкой)
+is_student = True # bool (логический тип)
+</code></pre>
+
+            <h3>Вывод в консоль</h3>
+            <p>Для вывода используется функция <code>print()</code>. F-строки (с Python 3.6+) - удобный способ форматирования.</p>
+<pre><code>
+print(f"Имя: {name}, Возраст: {age}")
+# Вывод: Имя: Alice, Возраст: 30
+</code></pre>
+
+            <h3>Условные операторы (if/elif/else)</h3>
+            <p>Отступы (обычно 4 пробела) в Python критически важны, они определяют блоки кода.</p>
+<pre><code>
+if age < 18:
+    print("Вы несовершеннолетний")
+elif age >= 18 and age < 65:
+    print("Вы взрослый")
+else:
+    print("Вы пенсионер")
+</code></pre>
+
+            <h3>Цикл While</h3>
+            <p>Цикл <code>while</code> выполняется, пока условие истинно. Главное - не забыть изменить условие внутри цикла, чтобы не получить бесконечный цикл.</p>
+<pre><code>
+count = 0
+while count < 5:
+    print(count)
+    count += 1  # Эквивалентно count = count + 1
+# Выведет: 0, 1, 2, 3, 4
+</code></pre>
+            
+            <h3>Ввод пользователя</h3>
+            <p>Функция <code>input()</code> получает данные от пользователя из консоли. Важно помнить, что она **всегда возвращает строку (str)**.</p>
+<pre><code>
+name = input("Введите ваше имя: ")
+print(f"Привет, {name}!")
+
+# Если нужно число, его надо преобразовать (скастить)
+age_str = input("Введите ваш возраст: ")
+age_int = int(age_str) # Может вызвать ошибку, если введено не число
+</code></pre>
+        </section>
+        
+        <section id="data-structures">
+            <h2>Структуры данных</h2>
+            
+            <h3>Списки (Lists)</h3>
+            <p>Упорядоченные, <strong>изменяемые</strong> (mutable) коллекции. Аналог массивов в других языках. Индексация начинается с 0. Используются <code>[]</code>.</p>
+<pre><code>
+fruits = ["apple", "banana", "cherry"]
+fruits.append("orange")      # Добавление в конец
+print(fruits[0])             # 'apple'
+print(fruits[-1])            # 'orange' (индексация с конца)
+print(fruits[1:3])           # Срез: ['banana', 'cherry']
+</code></pre>
+
+            <h3>Словари (Dictionaries)</h3>
+            <p>Неупорядоченные (до Python 3.7) коллекции пар "ключ-значение". <strong>Изменяемые</strong>. Используются <code>{}</code>.</p>
+<pre><code>
+person = {
+    "name": "Bob",
+    "age": 25,
+    "city": "New York"
+}
+print(person["name"])            # 'Bob'
+person["age"] = 26               # Изменение значения
+person["job"] = "Developer"      # Добавление новой пары
+</code></pre>
+            
+            <h3>Цикл For</h3>
+            <p>Чаще всего используется для итерации (перебора) элементов в коллекциях.</p>
+<pre><code>
+# Итерация по списку
+for fruit in fruits:
+    print(fruit)
+
+# Итерация по словарю
+for key, value in person.items():
+    print(f"{key}: {value}")
+
+# Цикл с использованием range
+for i in range(5):
+    print(i) # Выведет 0, 1, 2, 3, 4
+</code></pre>
+
+            <h3>Кортежи (Tuples)</h3>
+            <p>Упорядоченные, <strong>неизменяемые</strong> (immutable) коллекции. Похожи на списки, но их нельзя изменить после создания. Используются <code>()</code>. Работают быстрее списков.</p>
+<pre><code>
+point = (10, 20)
+print(point[0]) # 10
+# point[0] = 15 # Вызовет ошибку TypeError
+
+# Распаковка кортежа
+x, y = point
+print(f"X: {x}, Y: {y}")
+</code></pre>
+            
+            <h3>Множества (Sets)</h3>
+            <p>Неупорядоченные коллекции <strong>уникальных</strong> элементов. <strong>Изменяемые</strong>. Удобны для удаления дубликатов и математических операций.</p>
+<pre><code>
+my_list = [1, 2, 2, 3, 4, 3, 5]
+unique_nums = set(my_list)
+print(unique_nums) # {1, 2, 3, 4, 5} (порядок может отличаться)
+
+set1 = {1, 2, 3}
+set2 = {3, 4, 5}
+print(set1.intersection(set2)) # Пересечение: {3}
+print(set1.union(set2))      # Объединение: {1, 2, 3, 4, 5}
+</code></pre>
+        </section>
+        
+        <section id="functions">
+            <h2>Функции и модули</h2>
+            
+            <h3>Объявление функции</h3>
+            <p>Функции объявляются с помощью ключевого слова <code>def</code>. Они помогают структурировать код и избегать повторений (принцип DRY - Don't Repeat Yourself).</p>
+<pre><code>
+def greet(name):
+    """
+    Эта функция приветствует пользователя по имени.
+    (Это docstring - строка документации)
+    """
+    return f"Привет, {name}!"
+
+message = greet("Иван")
+print(message)
+</code></pre>
+
+            <h3>Импорт модулей</h3>
+            <p>Python имеет обширную стандартную библиотеку. Модули подключаются через <code>import</code>.</p>
+<pre><code>
+import math # Импорт всего модуля
+print(math.sqrt(16)) # 4.0
+
+from datetime import date # Импорт конкретного класса
+today = date.today()
+print(today)
+</code></pre>
+            
+            <h3>Продвинутые аргументы функции</h3>
+            <p>Python предлагает гибкие способы передачи аргументов в функцию.</p>
+<pre><code>
+# 1. Аргументы по умолчанию
+def greet_adv(name, greeting="Привет"):
+    return f"{greeting}, {name}!"
+
+print(greet_adv("Анна")) # 'Привет, Анна!'
+print(greet_adv("Иван", greeting="Здравствуй")) # 'Здравствуй, Иван!'
+
+# 2. Произвольное количество позиционных аргументов (*args)
+# args - это кортеж (tuple)
+def sum_all(*args):
+    total = 0
+    for num in args:
+        total += num
+    return total
+
+print(sum_all(1, 2, 3, 4)) # 10
+
+# 3. Произвольное количество именованных аргументов (**kwargs)
+# kwargs - это словарь (dict)
+def display_user_info(**kwargs):
+    for key, value in kwargs.items():
+        print(f"{key.title()}: {value}")
+
+display_user_info(name="Alice", age=30, city="New York")
+</code></pre>
+        </section>
+
+        <section id="oop">
+            <h2>Классы (ООП)</h2>
+            <p>Python - полностью объектно-ориентированный язык. Классы - это "чертежи" для создания объектов. Объекты объединяют в себе данные (атрибуты) и поведение (методы).</p>
+            <p>Метод <code>__init__</code> - это конструктор, он вызывается при создании нового объекта. <code>self</code> - аналог <code>this</code>, ссылка на сам экземпляр.</p>
+<pre><code>
+class Dog:
+    # Атрибут класса (общий для всех)
+    species = "Canis familiaris"
+
+    # Конструктор (инициализатор)
+    def __init__(self, name, breed):
+        # Атрибуты экземпляра
+        self.name = name
+        self.breed = breed
+    
+    # Метод экземпляра
+    def bark(self):
+        return f"{self.name} (порода {self.breed}) говорит 'Гав'!"
+
+# Создание экземпляра (объекта)
+my_dog = Dog("Рекс", "Овчарка")
+print(my_dog.name)        # Рекс
+print(my_dog.bark())      # Рекс (порода Овчарка) говорит 'Гав'!
+print(my_dog.species)     # Canis familiaris
+</code></pre>
+        </section>
+
+        <section id="error-handling">
+            <h2>Обработка ошибок (Try/Except)</h2>
+            <p>Для "отлавливания" и обработки исключений (ошибок времени выполнения) используется конструкция <code>try...except</code>. Это позволяет программе не "падать" при возникновении проблемы.</p>
+            <pre><code>
+try:
+    # Блок кода, который может вызвать ошибку
+    num = int(input("Введите число: "))
+    result = 10 / num
+except ValueError:
+    # Выполняется, если int() не смог преобразовать строку
+    print("Ошибка: Введено не число.")
+except ZeroDivisionError:
+    # Выполняется, если num равен 0
+    print("Ошибка: Нельзя делить на ноль.")
+except Exception as e:
+    # "Всеядный" обработчик, ловит любые другие ошибки
+    print(f"Произошла неизвестная ошибка: {e}")
+else:
+    # Выполняется, ТОЛЬКО если ошибок в блоке try не было
+    print(f"Результат: {result}")
+finally:
+    # Выполняется ВСЕГДА (были ошибки или нет)
+    print("Блок try завершен.")
+            </code></pre>
+        </section>
+        
+        <section id="file-io">
+            <h2>Работа с файлами (File I/O)</h2>
+            <p>Менеджер контекста <code>with open(...)</code> - это современный и предпочтительный способ работы с файлами. Он гарантирует, что файл будет корректно закрыт, даже если внутри блока произойдет ошибка.</p>
+            
+            <h3>Запись в файл</h3>
+            <pre><code>
+# 'w' - (write) режим записи. Файл создается или ПЕРЕЗАПИСЫВАЕТСЯ.
+# encoding="utf-8" - важен для корректной работы с кириллицей.
+with open("hello.txt", "w", encoding="utf-8") as f:
+    f.write("Привет, мир!\n")
+    f.write("Это вторая строка.")
+
+# 'a' - (append) режим добавления в конец.
+with open("hello.txt", "a", encoding="utf-8") as f:
+    f.write("\nЭто добавленная строка.")
+            </code></pre>
+
+            <h3>Чтение из файла</h3>
+            <pre><code>
+# 'r' - (read) режим чтения (используется по умолчанию).
+try:
+    with open("hello.txt", "r", encoding="utf-8") as f:
+        # Читать весь файл как одну большую строку
+        # content = f.read()
+        
+        # Читать файл построчно в список
+        # lines = f.readlines()
+        
+        # Самый частый способ: читать построчно в цикле
+        for line in f:
+            print(line.strip()) # .strip() убирает лишние символы (пробелы, \n)
+except FileNotFoundError:
+    print("Ошибка: файл 'hello.txt' не найден.")
+            </code></pre>
+        </section>
+        
+        <section id="std-lib">
+            <h2>Стандартная библиотека</h2>
+            <p>Python поставляется с "батарейками в комплекте" - огромной стандартной библиотекой модулей, которые не нужно устанавливать отдельно. Вы просто импортируете их и используете.</p>
+            <ul>
+                <li><code>json</code>: Для работы с данными в формате JSON (сериализация и десериализация).</li>
+                <li><code>os</code>: Для взаимодействия с операционной системой (пути к файлам, переменные окружения, создание папок).</li>
+                <li><code>datetime</code>: Мощный модуль для работы с датами и временем.</li>
+                <li><code>math</code>: Основные математические функции (синус, косинус, корень и т.д.).</li>
+                <li><code>random</code>: Генерация случайных чисел, выбор случайных элементов.</li>
+                <li><code>requests</code>: (Технически, это <strong>не</strong> стандартная библиотека, а сторонний пакет. Но он настолько популярен и важен (<code>pip install requests</code>), что его часто упоминают). Используется для выполнения HTTP-запросов.</li>
+            </ul>
+            <pre><code>
+import json
+import os
+from datetime import datetime
+
+# Пример с JSON
+data = {"name": "Test", "value": 123}
+json_string = json.dumps(data) # Сериализация в строку
+print(json_string)
+
+# Пример с OS
+current_dir = os.getcwd()
+print(f"Текущая папка: {current_dir}")
+
+# Пример с datetime
+now = datetime.now()
+print(f"Сейчас: {now.strftime('%Y-%m-%d %H:%M:%S')}")
+            </code></pre>
+        </section>
+
+        <section id="advanced">
+            <h2>Продвинутые темы</h2>
+            <p>Этот раздел кратко затрагивает темы для более опытных программистов.</p>
+        </section>
+
+        <section id="decorators">
+            <h3>Декораторы</h3>
+            <p>Декораторы — это функции, которые "оборачивают" другие функции, расширяя их поведение без изменения их кода. Синтаксис <code>@</code> - "синтаксический сахар".</p>
+<pre><code>
+def my_decorator(func):
+    def wrapper(*args, **kwargs):
+        print("Что-то происходит ДО вызова функции.")
+        result = func(*args, **kwargs) # Передаем аргументы
+        print(f"Функция вернула: {result}")
+        print("Что-то происходит ПОСЛЕ вызова функции.")
+        return result
+    return wrapper
+
+@my_decorator
+def add(a, b):
+    print("Выполняется функция add...")
+    return a + b
+
+add(5, 3)
+</code></pre>
+        </section>
+
+        <section id="generators">
+            <h3>Генераторы</h3>
+            <p>Генераторы - это простой способ создания итераторов. Они используют <code>yield</code> для "возврата" значения, приостанавливая выполнение и сохраняя свое состояние для следующего вызова. Это очень эффективно для работы с большими наборами данных, так как они не хранятся в памяти целиком.</p>
+<pre><code>
+def count_up_to(n):
+    i = 1
+    while i <= n:
+        yield i
+        i += 1
+
+# Генератор "ленивый" - он не создает все числа сразу
+for num in count_up_to(5):
+    print(num) # Выведет 1, 2, 3, 4, 5
+</code></pre>
+        </section>
+
+        <section id="async">
+            <h3>Asyncio</h3>
+            <p><code>async</code>/<code>await</code> используется для написания асинхронного кода (кооперативной многозадачности), что критически важно для высоконагруженных I/O (сетевых) приложений. Это позволяет программе выполнять другие задачи, пока она ждет ответа от сети или диска.</p>
+<pre><code>
+import asyncio
+
+async def fetch_data(delay, url):
+    print(f"Начинаю загрузку {url}...")
+    await asyncio.sleep(delay) # Имитация долгой сетевой операции
+    print(f"Загрузка {url} завершена.")
+    return f"Данные из {url}"
+
+async def main():
+    # Запускаем задачи "одновременно"
+    task1 = asyncio.create_task(fetch_data(2, "google.com"))
+    task2 = asyncio.create_task(fetch_data(1, "yandex.ru"))
+
+    # Ждем завершения обеих задач
+    await task1
+    await task2
+    print("Все задачи выполнены.")
+
+# В .py файле это запускается так:
+# if __name__ == "__main__":
+#     asyncio.run(main())
+</code></pre>
+        </section>
+        
+    </main>
+
+    <script>
+        // Ждем, пока весь HTML-документ загрузится
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // Находим кнопку-гамбургер
+            const hamburgerBtn = document.getElementById('hamburger-btn');
+            
+            // Находим само боковое меню
+            const sidebar = document.getElementById('sidebar-nav');
+
+            // Навешиваем обработчик клика на кнопку
+            hamburgerBtn.addEventListener('click', function() {
+                // При клике переключаем (добавляем/удаляем) класс 'open' у меню
+                sidebar.classList.toggle('open');
+            });
+            
+            // --- Дополнительно: закрываем меню при клике на ссылку ---
+            // Находим все ссылки в меню
+            const navLinks = sidebar.querySelectorAll('a');
+            
+            navLinks.forEach(function(link) {
+                link.addEventListener('click', function() {
+                    // Проверяем, открыто ли меню (т.е. есть ли класс .open)
+                    if (sidebar.classList.contains('open')) {
+                        // Если да - закрываем его
+                        sidebar.classList.remove('open');
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
